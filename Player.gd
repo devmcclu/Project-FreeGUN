@@ -27,6 +27,8 @@ func _process(delta):
 		newBullet.position = $"bullet_spawn".global_position
 		newBullet.rotation = self.rotation
 		newBullet.linear_velocity = Vector2(cos(self.rotation)*500, sin(self.rotation)*500)
+		newBullet.parent = self
+		print(newBullet.parent)
 	
 	if move_up:
 		self.position.y -= 5

@@ -4,6 +4,8 @@ extends RigidBody2D
 # var a = 2
 # var b = "textvar"
 
+var parent
+
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
@@ -16,7 +18,7 @@ func _ready():
 
 
 func _on_bullet_body_entered(body):
-	if body.is_in_group("enemy"):
+	if self.parent != body:
 		body.health -= 1
 		print(body.health)
 		self.queue_free()
