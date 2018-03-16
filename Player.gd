@@ -4,6 +4,8 @@ extends RigidBody2D
 # var a = 2
 # var b = "textvar"
 
+var bullet_speed = 500
+
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -26,7 +28,7 @@ func _process(delta):
 		$"../".add_child(newBullet)
 		newBullet.position = $"bullet_spawn".global_position
 		newBullet.rotation = self.rotation
-		newBullet.linear_velocity = Vector2(cos(self.rotation)*500, sin(self.rotation)*500)
+		newBullet.linear_velocity = Vector2(cos(self.rotation)*bullet_speed, sin(self.rotation)*bullet_speed)
 		newBullet.parent = self
 		print(newBullet.parent)
 	

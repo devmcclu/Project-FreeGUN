@@ -18,7 +18,9 @@ func _ready():
 
 
 func _on_bullet_body_entered(body):
-	if self.parent != body:
+	if body.is_in_group("not_player"):
+		self.queue_free()
+	elif self.parent != body:
 		body.health -= 1
 		print(body.health)
 		self.queue_free()
