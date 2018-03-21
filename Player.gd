@@ -5,6 +5,7 @@ extends RigidBody2D
 # var b = "textvar"
 
 var bullet_speed = 500
+var damage = 1
 
 
 func _ready():
@@ -41,3 +42,8 @@ func _process(delta):
 	if move_right:
 		self.position.x += 5
 	pass
+
+func _on_Area2D_area_entered(area):
+	self.bullet_speed = area.bullet_speed
+	self.damage = area.damage
+	pass # replace with function body

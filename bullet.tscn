@@ -8,9 +8,9 @@
 custom_solver_bias = 0.0
 extents = Vector2( 16.0186, 4.96663 )
 
-[node name="bullet" type="RigidBody2D" groups=[
-"bullet",
+[node name="bullet" type="RigidBody2D" index="0" groups=[
 "not_player",
+"bullet",
 ]]
 
 position = Vector2( 521.097, 238.836 )
@@ -21,7 +21,7 @@ mode = 0
 mass = 1.0
 friction = 1.0
 bounce = 0.0
-gravity_scale = 1.0
+gravity_scale = 0.0
 custom_integrator = false
 continuous_cd = 0
 contacts_reported = 1
@@ -44,6 +44,15 @@ _sections_unfolded = [ "Transform" ]
 
 shape = SubResource( 1 )
 
+[node name="Timer" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 4.0
+one_shot = false
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_bullet_body_entered"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 
