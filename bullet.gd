@@ -18,7 +18,9 @@ func _ready():
 
 
 func _on_bullet_body_entered(body):
-	if body.is_in_group("not_player"):
+	if body.is_in_group("bullet"):
+		pass
+	elif body.is_in_group("not_player"):
 		self.queue_free()
 	elif self.parent != body:
 		body.health -= parent.damage
@@ -27,4 +29,3 @@ func _on_bullet_body_entered(body):
 
 func _on_Timer_timeout():
 	self.queue_free()
-	pass # replace with function body

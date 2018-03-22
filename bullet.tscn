@@ -8,8 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 16.0186, 4.96663 )
 
-[node name="bullet" type="RigidBody2D" index="0" groups=[
-"not_player",
+[node name="bullet" type="RigidBody2D" groups=[
 "bullet",
 ]]
 
