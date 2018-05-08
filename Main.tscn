@@ -119,7 +119,6 @@ editor/display_folded = true
 "not_player",
 ]]
 
-editor/display_folded = true
 position = Vector2( -271.321, 281.872 )
 input_pickable = false
 collision_layer = 1

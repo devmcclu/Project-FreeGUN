@@ -12,6 +12,6 @@ func _ready():
 	pass
 
 func _process(delta):
-	if self.health == 0:
+	if self.health <= 0:
 		self.queue_free()
 	pass

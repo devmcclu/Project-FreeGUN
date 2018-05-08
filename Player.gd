@@ -22,8 +22,8 @@ func _process(delta):
 	var fire_gun = Input.is_action_just_pressed("fire_gun")
 	
 	#PLayer switch weapon variables
-	var weapon_up = Input.is_action_just_pressed("weapon_up")
-	var weapon_down = Input.is_action_just_pressed("weapon_down")
+	var weapon_up = Input.is_action_pressed("weapon_up")
+	var weapon_down = Input.is_action_pressed("weapon_down")
 	var switch_weapon_1 = Input.is_action_just_pressed("switch_weapon_1")
 	var switch_weapon_2 = Input.is_action_just_pressed("switch_weapon_2")
 	var switch_weapon_3 = Input.is_action_just_pressed("switch_weapon_3")
@@ -39,11 +39,30 @@ func _process(delta):
 		newBullet.parent = self
 		print(newBullet.parent)
 	
-	#Switch weapons with scroll whell
+	#Switch weapons with scroll wheel
 	if weapon_up:
 		print("up a weapon")
 	if weapon_down:
 		print("down a weapon")
+	
+	if switch_weapon_1:
+		if has_guns[0] == true:
+			self.bullet_speed = 500
+			self.damage = 1
+		else:
+			pass
+	if switch_weapon_2:
+		if has_guns[1] == true:
+			self.bullet_speed = 100
+			self.damage = 3
+		else:
+			pass
+	if switch_weapon_3:
+		if has_guns[2] == true:
+			self.bullet_speed = 1000
+			self.damage = 1
+		else:
+			pass
 	
 #	if self.has_guns[2] == true:
 #		print("new gun pa")
@@ -73,6 +92,7 @@ func _physics_process(delta):
 		#self.apply_impulse(Vector2(0,0), Vector2(0, player_speed))
 	pass
 
+#On gun pickup, change gun variables
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("gun"):
 		self.bullet_speed = area.bullet_speed
