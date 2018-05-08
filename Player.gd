@@ -4,6 +4,7 @@ extends RigidBody2D
 # var a = 2
 # var b = "textvar"
 
+var health = 100
 var bullet_speed = 500
 var damage = 1
 var player_speed = 5

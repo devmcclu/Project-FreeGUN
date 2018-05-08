@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="FreeGUN"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://Levels/Main.tscn"
 config/icon="res://icon.png"
 
 [debug]
