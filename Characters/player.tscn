@@ -9,12 +9,12 @@
 custom_solver_bias = 0.0
 extents = Vector2( 29.3281, 28.8452 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32.1106, 32.283 )
 
-[node name="player" type="RigidBody2D"]
+[node name="player" type="RigidBody2D" index="0"]
 
 position = Vector2( 278.874, 231.712 )
 input_pickable = false
@@ -96,7 +96,7 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 
-shape = SubResource( 7 )
+shape = SubResource( 2 )
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 

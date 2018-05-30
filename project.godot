@@ -48,6 +48,10 @@ switch_weapon_2=[ Object(InputEventKey,"resource_local_to_scene":false,"resource
 switch_weapon_3=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":51,"unicode":0,"echo":false,"script":null)
  ]
 
+[physics]
+
+2d/thread_model=2
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

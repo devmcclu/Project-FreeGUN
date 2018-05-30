@@ -4,7 +4,7 @@ extends RigidBody2D
 # var a = 2
 # var b = "textvar"
 
-var health = 3
+var health = 100
 
 func _ready():
 	# Called every time the node is added to the scene.

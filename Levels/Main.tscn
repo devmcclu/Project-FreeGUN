@@ -32,7 +32,7 @@ extents = Vector2( 779.543, 31.7486 )
 
 [node name="background" type="Sprite" parent="." index="0"]
 
-position = Vector2( 554.572, 292.832 )
+position = Vector2( 556.423, 292.832 )
 scale = Vector2( 24.7798, 8.27475 )
 texture = ExtResource( 1 )
 
@@ -70,7 +70,7 @@ __meta__ = {
 "_edit_group_": true
 }
 bullet_speed = 100
-damage = 3
+damage = 100
 gun_number = 1
 
 [node name="gun_1_sprite" type="Sprite" parent="gun_1" index="0"]
@@ -103,7 +103,7 @@ __meta__ = {
 "_edit_group_": true
 }
 bullet_speed = 1000
-damage = 1
+damage = 17
 gun_number = 2
 
 [node name="gun_2" type="Sprite" parent="gun_2" index="0"]

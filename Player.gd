@@ -6,7 +6,7 @@ extends RigidBody2D
 
 var health = 100
 var bullet_speed = 500
-var damage = 1
+var damage = 34
 var player_speed = 5
 var current_gun = 1
 #Array to store guns
@@ -80,17 +80,17 @@ func _physics_process(delta):
 	
 	#Player movement
 	if move_up:
-		self.position.y -= player_speed
-		#self.apply_impulse(Vector2(0,0), Vector2(-player_speed, 0))
+		#self.position.y -= player_speed
+		self.apply_impulse(Vector2(0,0), Vector2(0, -player_speed))
 	if move_down:
-		self.position.y += player_speed
-		#self.apply_impulse(Vector2(0,0), Vector2(player_speed, 0))
+		#self.position.y += player_speed
+		self.apply_impulse(Vector2(0,0), Vector2(0, player_speed))
 	if move_left:
-		self.position.x -= player_speed
-		#self.apply_impulse(Vector2(0,0), Vector2(0, -player_speed))
+		#self.position.x -= player_speed
+		self.apply_impulse(Vector2(0,0), Vector2(-player_speed, 0))
 	if move_right:
-		self.position.x += player_speed
-		#self.apply_impulse(Vector2(0,0), Vector2(0, player_speed))
+		#self.position.x += player_speed
+		self.apply_impulse(Vector2(0,0), Vector2(player_speed, 0))
 	pass
 
 #On gun pickup, change gun variables
