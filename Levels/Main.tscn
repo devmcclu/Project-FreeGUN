@@ -72,6 +72,7 @@ __meta__ = {
 bullet_speed = 100
 damage = 100
 gun_number = 1
+gun_ammo_count = 5
 
 [node name="gun_1_sprite" type="Sprite" parent="gun_1" index="0"]
 
@@ -105,6 +106,7 @@ __meta__ = {
 bullet_speed = 1000
 damage = 17
 gun_number = 2
+gun_ammo_count = 50
 
 [node name="gun_2" type="Sprite" parent="gun_2" index="0"]
 
