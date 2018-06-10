@@ -38,6 +38,8 @@ texture = ExtResource( 1 )
 
 [node name="player" parent="." index="1" instance=ExtResource( 2 )]
 
+collision/safe_margin = 0.05
+
 [node name="enemy" parent="." index="2" instance=ExtResource( 3 )]
 
 editor/display_folded = false

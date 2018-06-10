@@ -1,10 +1,12 @@
-extends RigidBody2D
+extends KinematicBody2D
 
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
 
 #Base player variables and stats
+export (int) var speed = 200
+var velocity = Vector2()
 var health = 100
 var bullet_speed = 500
 var damage = 34
@@ -78,30 +80,44 @@ func _process(delta):
 #	if self.has_guns[2] == true:
 #		print("new gun pa")
 
+func get_input():
+	velocity = Vector2()
+	if Input.is_action_pressed('player_move_right'):
+		velocity.x += 1
+	if Input.is_action_pressed('player_move_left'):
+		velocity.x -= 1
+	if Input.is_action_pressed('player_move_down'):
+		velocity.y += 1
+	if Input.is_action_pressed('player_move_up'):
+		velocity.y -= 1
+	velocity = velocity.normalized() * speed
+
 func _physics_process(delta):
-	#Player movement variables
-	var move_up = Input.is_action_pressed("player_move_up")
-	var move_down = Input.is_action_pressed("player_move_down")
-	var move_left = Input.is_action_pressed("player_move_left")
-	var move_right = Input.is_action_pressed("player_move_right")
-	
+	get_input()
+	move_and_slide(velocity)
+#	#Player movement variables
+#	var move_up = Input.is_action_pressed("player_move_up")
+#	var move_down = Input.is_action_pressed("player_move_down")
+#	var move_left = Input.is_action_pressed("player_move_left")
+#	var move_right = Input.is_action_pressed("player_move_right")
+#
 	#Player looks at mouse
 	self.look_at(get_global_mouse_position())
-	
-	#Player movement
-	if move_up:
-		#self.position.y -= player_speed
-		self.apply_impulse(Vector2(0,0), Vector2(0, -player_speed))
-	if move_down:
-		#self.position.y += player_speed
-		self.apply_impulse(Vector2(0,0), Vector2(0, player_speed))
-	if move_left:
-		#self.position.x -= player_speed
-		self.apply_impulse(Vector2(0,0), Vector2(-player_speed, 0))
-	if move_right:
-		#self.position.x += player_speed
-		self.apply_impulse(Vector2(0,0), Vector2(player_speed, 0))
-	pass
+#
+#	#Player movement
+#	if move_up:
+#		#self.position.y -= player_speed
+#		self.apply_impulse(Vector2(0,0), Vector2(0, -player_speed))
+#	if move_down:
+#		#self.position.y += player_speed
+#		self.apply_impulse(Vector2(0,0), Vector2(0, player_speed))
+#	if move_left:
+#		#self.position.x -= player_speed
+#		self.apply_impulse(Vector2(0,0), Vector2(-player_speed, 0))
+#	if move_right:
+#		#self.position.x += player_speed
+#		self.apply_impulse(Vector2(0,0), Vector2(player_speed, 0))
+#	pass
 
 #On gun pickup, change gun variables
 func _on_Area2D_area_entered(area):
