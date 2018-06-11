@@ -21,7 +21,7 @@ func _on_bullet_body_entered(body):
 	match body.collision_layer:
 		1:
 			if self.parent != body:
-				body.health -= parent.damage
+				body.health -= parent.gun_stats[2]
 				print(body.health)
 				self.queue_free()
 			pass

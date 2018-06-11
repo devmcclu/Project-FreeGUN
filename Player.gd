@@ -8,12 +8,10 @@ extends KinematicBody2D
 export (int) var speed = 200
 var velocity = Vector2()
 var health = 100
-var bullet_speed = 500
-var damage = 34
-var player_speed = 5
-var current_gun = 0
 #Array to check if player has a gun
 var has_guns = [true, false, false]
+#Array to store current gun stats (gun number, bullet speed, damage)
+var gun_stats = [0, 500, 34]
 #array to store gun ammunition ammount
 var gun_ammo = [1, 0, 0]
 
@@ -35,17 +33,18 @@ func _process(delta):
 	var switch_weapon_3 = Input.is_action_just_pressed("switch_weapon_3")
 	
 	#Player Fires Weapon
-	if fire_gun and gun_ammo[current_gun] > 0:
+#	if fire_gun and gun_ammo[current_gun] > 0:
+	if fire_gun and gun_ammo[gun_stats[0]] > 0:
 		print("fire")
 		var newBullet = load("res://bullet.tscn").instance()
 		$"../".add_child(newBullet)
 		newBullet.position = $"bullet_spawn".global_position
 		newBullet.rotation = self.rotation
-		newBullet.linear_velocity = Vector2(cos(self.rotation)*bullet_speed, sin(self.rotation)*bullet_speed)
+		newBullet.linear_velocity = Vector2(cos(self.rotation)*gun_stats[1], sin(self.rotation)*gun_stats[1])
 		newBullet.parent = self
-		if current_gun > 0:
-			self.gun_ammo[current_gun] -= 1
-			print(gun_ammo[current_gun])
+		if gun_stats[0] > 0:
+			self.gun_ammo[gun_stats[0]] -= 1
+			print(gun_ammo[gun_stats[0]])
 			print("one less")
 		print(newBullet.parent)
 	
@@ -57,23 +56,17 @@ func _process(delta):
 	
 	if switch_weapon_1:
 		if has_guns[0] == true:
-			self.bullet_speed = 500
-			self.damage = 34
-			self.current_gun = 0
+			self.gun_stats = [0, 500, 34]
 		else:
 			pass
 	if switch_weapon_2:
 		if has_guns[1] == true:
-			self.bullet_speed = 100
-			self.damage = 100
-			self.current_gun = 1
+			gun_stats = [1, 100, 100]
 		else:
 			pass
 	if switch_weapon_3:
 		if has_guns[2] == true:
-			self.bullet_speed = 1000
-			self.damage = 50
-			self.current_gun = 2
+			gun_stats = [2, 1000, 50]
 		else:
 			pass
 
@@ -100,10 +93,7 @@ func _physics_process(delta):
 
 #On gun pickup, change gun variables
 func _on_Area2D_area_entered(area):
-	#if area.is_in_group("gun"):
-	self.bullet_speed = area.bullet_speed
-	self.damage = area.damage
+	self.gun_stats = [area.gun_number, area.bullet_speed, area.damage]
 	self.has_guns[area.gun_number] = true
 	self.gun_ammo[area.gun_number] = area.gun_ammo_count
-	self.current_gun = area.gun_number
 	area.queue_free()

@@ -122,6 +122,8 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="walls" type="Node2D" parent="." index="7"]
 
+editor/display_folded = true
+
 [node name="wall" type="RigidBody2D" parent="walls" index="0" groups=[
 "not_player",
 ]]
