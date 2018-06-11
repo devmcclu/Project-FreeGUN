@@ -38,6 +38,7 @@ texture = ExtResource( 1 )
 
 [node name="player" parent="." index="1" instance=ExtResource( 2 )]
 
+collision_mask = 15
 collision/safe_margin = 0.05
 
 [node name="enemy" parent="." index="2" instance=ExtResource( 3 )]
@@ -54,9 +55,7 @@ position = Vector2( 776.005, 159.475 )
 
 position = Vector2( 807.765, 489.741 )
 
-[node name="gun_1" type="Area2D" parent="." index="5" groups=[
-"gun",
-]]
+[node name="gun_1" type="Area2D" parent="." index="5"]
 
 editor/display_folded = true
 position = Vector2( 543.817, 293.954 )
@@ -65,9 +64,11 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_layer = 8
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 4 )
+_sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -87,9 +88,7 @@ scale = Vector2( 1, 3.1726 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="gun_2" type="Area2D" parent="." index="6" groups=[
-"gun",
-]]
+[node name="gun_2" type="Area2D" parent="." index="6"]
 
 editor/display_folded = true
 position = Vector2( 314.156, 439.543 )
@@ -98,10 +97,11 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_layer = 8
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 4 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -122,16 +122,15 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="walls" type="Node2D" parent="." index="7"]
 
-editor/display_folded = true
-
 [node name="wall" type="RigidBody2D" parent="walls" index="0" groups=[
 "not_player",
 ]]
 
+editor/display_folded = true
 position = Vector2( -271.321, 281.872 )
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 2
+collision_mask = 5
 mode = 1
 mass = 1.0
 friction = 1.0
@@ -147,6 +146,7 @@ linear_velocity = Vector2( 0, 0 )
 linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
+_sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -168,8 +168,8 @@ shape = SubResource( 3 )
 editor/display_folded = true
 position = Vector2( 1353.52, 281.872 )
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 2
+collision_mask = 5
 mode = 1
 mass = 1.0
 friction = 1.0
@@ -185,6 +185,7 @@ linear_velocity = Vector2( 0, 0 )
 linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
+_sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -206,8 +207,8 @@ shape = SubResource( 3 )
 editor/display_folded = true
 position = Vector2( 541.573, 587.269 )
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 2
+collision_mask = 5
 mode = 1
 mass = 1.0
 friction = 1.0
@@ -223,6 +224,7 @@ linear_velocity = Vector2( 0, 0 )
 linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
+_sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -244,8 +246,8 @@ _sections_unfolded = [ "Transform" ]
 editor/display_folded = true
 position = Vector2( 541.299, 1.92056 )
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 2
+collision_mask = 5
 mode = 1
 mass = 1.0
 friction = 1.0
@@ -261,6 +263,7 @@ linear_velocity = Vector2( 0, 0 )
 linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
+_sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_edit_group_": true
 }

@@ -8,14 +8,12 @@
 custom_solver_bias = 0.0
 extents = Vector2( 16.0186, 4.96663 )
 
-[node name="bullet" type="RigidBody2D" groups=[
-"bullet",
-]]
+[node name="bullet" type="RigidBody2D"]
 
 position = Vector2( 521.097, 238.836 )
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 4
+collision_mask = 3
 mode = 0
 mass = 1.0
 friction = 1.0
@@ -32,6 +30,7 @@ linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
 
 [node name="bullet" type="Sprite" parent="." index="0"]
 

@@ -19,27 +19,24 @@ extents = Vector2( 32.1106, 32.283 )
 position = Vector2( 278.874, 231.712 )
 input_pickable = false
 collision_layer = 1
-collision_mask = 1
+collision_mask = 7
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "collision" ]
+_sections_unfolded = [ "Collision", "collision" ]
 speed = 200
 
 [node name="player_collision" type="CollisionShape2D" parent="." index="0"]
 
-scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
 [node name="player_sprite" type="Sprite" parent="." index="1"]
 
 rotation = 1.5708
-scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="camera" type="Camera2D" parent="." index="2"]
 
-scale = Vector2( 1, 1 )
 anchor_mode = 1
 rotating = false
 current = true
@@ -66,16 +63,14 @@ editor_draw_drag_margin = false
 [node name="bullet_spawn" type="Sprite" parent="." index="3"]
 
 visible = false
-position = Vector2( 28, 0 )
+position = Vector2( 48, 0 )
 rotation = 1.5708
-scale = Vector2( 1, 1 )
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="Area2D" type="Area2D" parent="." index="4"]
 
 visible = false
-scale = Vector2( 1, 1 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0

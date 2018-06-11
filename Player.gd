@@ -76,12 +76,11 @@ func _process(delta):
 			self.current_gun = 2
 		else:
 			pass
-	
-#	if self.has_guns[2] == true:
-#		print("new gun pa")
 
 func get_input():
+	#Create controlable Vector2 for player movement input
 	velocity = Vector2()
+	#Change movement Vector2 variables on player input
 	if Input.is_action_pressed('player_move_right'):
 		velocity.x += 1
 	if Input.is_action_pressed('player_move_left'):
@@ -90,41 +89,21 @@ func get_input():
 		velocity.y += 1
 	if Input.is_action_pressed('player_move_up'):
 		velocity.y -= 1
+	#Normalize player movement input to make sure speed is constant
 	velocity = velocity.normalized() * speed
 
 func _physics_process(delta):
 	get_input()
 	move_and_slide(velocity)
-#	#Player movement variables
-#	var move_up = Input.is_action_pressed("player_move_up")
-#	var move_down = Input.is_action_pressed("player_move_down")
-#	var move_left = Input.is_action_pressed("player_move_left")
-#	var move_right = Input.is_action_pressed("player_move_right")
-#
 	#Player looks at mouse
 	self.look_at(get_global_mouse_position())
-#
-#	#Player movement
-#	if move_up:
-#		#self.position.y -= player_speed
-#		self.apply_impulse(Vector2(0,0), Vector2(0, -player_speed))
-#	if move_down:
-#		#self.position.y += player_speed
-#		self.apply_impulse(Vector2(0,0), Vector2(0, player_speed))
-#	if move_left:
-#		#self.position.x -= player_speed
-#		self.apply_impulse(Vector2(0,0), Vector2(-player_speed, 0))
-#	if move_right:
-#		#self.position.x += player_speed
-#		self.apply_impulse(Vector2(0,0), Vector2(player_speed, 0))
-#	pass
 
 #On gun pickup, change gun variables
 func _on_Area2D_area_entered(area):
-	if area.is_in_group("gun"):
-		self.bullet_speed = area.bullet_speed
-		self.damage = area.damage
-		self.has_guns[area.gun_number] = true
-		self.gun_ammo[area.gun_number] = area.gun_ammo_count
-		self.current_gun = area.gun_number
-		area.queue_free()
+	#if area.is_in_group("gun"):
+	self.bullet_speed = area.bullet_speed
+	self.damage = area.damage
+	self.has_guns[area.gun_number] = true
+	self.gun_ammo[area.gun_number] = area.gun_ammo_count
+	self.current_gun = area.gun_number
+	area.queue_free()
