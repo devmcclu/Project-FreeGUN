@@ -7,10 +7,7 @@ path="res://.import/gun_1.png-be4418004402c8d43357625cf95593b2.stex"
 [deps]
 
 source_file="res://graphics/gun_1.png"
-source_md5="eca0ad84deb2cf7ddefe2ef7d2bdf48e"
-
 dest_files=[ "res://.import/gun_1.png-be4418004402c8d43357625cf95593b2.stex" ]
-dest_md5="12275ea5a0643ee8e5f762d5614f941b"
 
 [params]
 
