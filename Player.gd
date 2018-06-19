@@ -21,8 +21,13 @@ func _ready():
 	# Initialization here
 	pass
 
+func health_check():
+	if self.health <= 0:
+		self.queue_free()
+
 func _process(delta):
 	#Player fire variable
+	health_check()
 	var fire_gun = Input.is_action_just_pressed("fire_gun")
 	
 	#PLayer switch weapon variables

@@ -14,7 +14,7 @@ extents = Vector2( 29.3281, 28.8452 )
 custom_solver_bias = 0.0
 extents = Vector2( 32.1106, 32.283 )
 
-[node name="player" type="KinematicBody2D" index="0"]
+[node name="player" type="KinematicBody2D"]
 
 position = Vector2( 278.874, 231.712 )
 input_pickable = false
@@ -35,8 +35,32 @@ rotation = 1.5708
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="camera" type="Camera2D" parent="." index="2"]
+[node name="bullet_spawn" type="Sprite" parent="." index="2"]
 
+visible = false
+position = Vector2( 48, 0 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="Area2D" type="Area2D" parent="." index="3"]
+
+visible = false
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="." index="4"]
+
+rotation = 1.5708
 anchor_mode = 1
 rotating = false
 current = true
@@ -52,36 +76,14 @@ smoothing_enabled = false
 smoothing_speed = 5.0
 offset_v = 0.0
 offset_h = 0.0
-drag_margin_left = 0.2
-drag_margin_top = 0.2
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-
-[node name="bullet_spawn" type="Sprite" parent="." index="3"]
-
-visible = false
-position = Vector2( 48, 0 )
-rotation = 1.5708
-texture = ExtResource( 3 )
-_sections_unfolded = [ "Offset", "Transform" ]
-
-[node name="Area2D" type="Area2D" parent="." index="4"]
-
-visible = false
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
-
-shape = SubResource( 2 )
+_sections_unfolded = [ "Drag Margin", "Smoothing" ]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 

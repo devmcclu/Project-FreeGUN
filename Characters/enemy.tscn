@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://enemy.gd" type="Script" id=1]
 [ext_resource path="res://graphics/enemy.png" type="Texture" id=2]
+[ext_resource path="res://graphics/bullet.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -10,7 +11,6 @@ extents = Vector2( 32.152, 31.9393 )
 
 [node name="enemy" type="RigidBody2D"]
 
-editor/display_folded = true
 input_pickable = false
 collision_layer = 1
 collision_mask = 7
@@ -43,5 +43,21 @@ _sections_unfolded = [ "Transform" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 1 )
+
+[node name="shoot_timer" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+
+[node name="bullet_spawn" type="Sprite" parent="." index="3"]
+
+position = Vector2( 48, 0 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[connection signal="timeout" from="shoot_timer" to="." method="_on_ShootTimer_timeout"]
 
 

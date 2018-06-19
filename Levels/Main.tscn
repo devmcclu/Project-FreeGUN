@@ -43,12 +43,10 @@ collision/safe_margin = 0.05
 
 [node name="enemy" parent="." index="2" instance=ExtResource( 3 )]
 
-editor/display_folded = false
 position = Vector2( 805.116, 325.649 )
 
 [node name="enemy2" parent="." index="3" instance=ExtResource( 3 )]
 
-editor/display_folded = false
 position = Vector2( 776.005, 159.475 )
 
 [node name="enemy3" parent="." index="4" instance=ExtResource( 3 )]
