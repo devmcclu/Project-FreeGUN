@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://graphics/GUI/background.png" type="Texture" id=1]
+[ext_resource path="res://Iso_Dark/iso_dark.theme" type="Theme" id=1]
+[ext_resource path="res://graphics/GUI/background.png" type="Texture" id=2]
 
 [node name="GUI" type="MarginContainer" index="0"]
 
@@ -17,11 +18,12 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+theme = ExtResource( 1 )
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
 custom_constants/margin_bottom = 20
-_sections_unfolded = [ "Focus", "Hint", "Mouse", "Rect", "Size Flags", "custom_constants" ]
+_sections_unfolded = [ "Focus", "Hint", "Mouse", "Rect", "Size Flags", "Theme", "custom_constants" ]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." index="0"]
 
@@ -32,7 +34,7 @@ anchor_bottom = 0.0
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 1260.0
-margin_bottom = 60.0
+margin_bottom = 90.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -47,8 +49,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 108.0
-margin_bottom = 40.0
+margin_right = 130.0
+margin_bottom = 70.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -63,8 +65,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 108.0
-margin_bottom = 40.0
+margin_right = 130.0
+margin_bottom = 70.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -78,9 +80,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 8.0
-margin_right = 108.0
-margin_bottom = 40.0
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 115.0
+margin_bottom = 55.0
 rect_min_size = Vector2( 100, 40 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -88,7 +91,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 _sections_unfolded = [ "Rect" ]
 
 [node name="Title" type="Label" parent="HBoxContainer/HealthCounters/Counter/NinePatchRect" index="0"]
