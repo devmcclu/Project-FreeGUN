@@ -8,8 +8,6 @@
 [ext_resource path="res://graphics/gun_2.png" type="Texture" id=6]
 [ext_resource path="res://graphics/wall.png" type="Texture" id=7]
 
-
-
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
@@ -30,7 +28,7 @@ extents = Vector2( 32.3673, 412.779 )
 custom_solver_bias = 0.0
 extents = Vector2( 779.543, 31.7486 )
 
-[node name="Main" type="Node" index="0"]
+[node name="Main" type="Node"]
 
 [node name="background" type="Sprite" parent="." index="0"]
 
