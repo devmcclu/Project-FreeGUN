@@ -21,15 +21,15 @@ func _process(delta):
 
 func _on_ShootTimer_timeout():
 	print("fire")
-	var newBullet = load("res://bullet.tscn").instance()
-	$"../".add_child(newBullet)
-	newBullet.position = $"bullet_spawn".global_position
-	newBullet.rotation = self.rotation
-	newBullet.linear_velocity = Vector2(cos(self.rotation)*gun_stats[1], sin(self.rotation)*gun_stats[1])
-	newBullet.parent = self
+	var new_bullet = load("res://bullet.tscn").instance()
+	$"../".add_child(new_bullet)
+	new_bullet.position = $"bullet_spawn".global_position
+	new_bullet.rotation = self.rotation
+	new_bullet.linear_velocity = Vector2(cos(self.rotation)*gun_stats[1], sin(self.rotation)*gun_stats[1])
+	new_bullet.parent = self
 	if gun_stats[0] > 0:
 		self.gun_ammo[gun_stats[0]] -= 1
 		print(gun_ammo[gun_stats[0]])
 		print("one less")
-	print(newBullet.parent)
+	print(new_bullet.parent)
 	pass # replace with function body
