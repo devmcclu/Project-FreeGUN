@@ -55,10 +55,6 @@ switch_weapon_3=[ Object(InputEventKey,"resource_local_to_scene":false,"resource
 2d_physics/layer_3="Bullet"
 2d_physics/layer_4="Gun"
 
-[physics]
-
-2d/thread_model=2
-
 [rendering]
 
 environment/default_environment="res://default_env.tres"
