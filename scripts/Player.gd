@@ -4,6 +4,8 @@ extends KinematicBody2D
 # var a = 2
 # var b = "textvar"
 
+signal change_gun
+
 #Base player variables and stats
 export (int) var speed = 200
 var velocity = Vector2()
@@ -19,6 +21,7 @@ var gun_ammo = [1, 0, 0]
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
+	emit_signal("change_gun")
 	pass
 
 func health_check():
@@ -67,16 +70,19 @@ func _process(delta):
 	if switch_weapon_1:
 		if has_guns[0] == true:
 			self.gun_stats = [0, 500, 34]
+			emit_signal("change_gun")
 		else:
 			pass
 	if switch_weapon_2:
 		if has_guns[1] == true:
 			gun_stats = [1, 100, 100]
+			emit_signal("change_gun")
 		else:
 			pass
 	if switch_weapon_3:
 		if has_guns[2] == true:
 			gun_stats = [2, 1000, 50]
+			emit_signal("change_gun")
 		else:
 			pass
 
@@ -109,4 +115,5 @@ func _on_Area2D_area_entered(area):
 	self.has_guns[area.gun_number] = true
 	#Player aquires base ammo for the gun
 	self.gun_ammo[area.gun_number] = area.gun_ammo_count
+	emit_signal("change_gun")
 	area.queue_free()
