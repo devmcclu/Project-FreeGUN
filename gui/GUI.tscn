@@ -1,11 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Iso_Dark/iso_dark.theme" type="Theme" id=1]
 [ext_resource path="res://gui/Timer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gui/KillCounter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://gui/HealthCounter.tscn" type="PackedScene" id=4]
-[ext_resource path="res://gui/AmmoCounter.tscn" type="PackedScene" id=5]
-
+[ext_resource path="res://gui/GunName.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gui/AmmoCounter.tscn" type="PackedScene" id=6]
 
 [node name="GUI" type="MarginContainer"]
 
@@ -86,18 +86,24 @@ rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
+size_flags_horizontal = 3
 size_flags_vertical = 1
 alignment = 0
-_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect" ]
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags" ]
 
 [node name="HealthCounter" parent="VBoxContainer/HBoxContainer" index="0" instance=ExtResource( 4 )]
 
 margin_left = 0.0
+margin_right = 551.0
+size_flags_horizontal = 3
+
+[node name="GunName" parent="VBoxContainer/HBoxContainer" index="1" instance=ExtResource( 5 )]
+
+margin_left = 555.0
 margin_right = 1106.0
 size_flags_horizontal = 3
 
-[node name="AmmoCounter" parent="VBoxContainer/HBoxContainer" index="1" instance=ExtResource( 5 )]
+[node name="AmmoCounter" parent="VBoxContainer/HBoxContainer" index="2" instance=ExtResource( 6 )]
 
 editor/display_folded = true
 

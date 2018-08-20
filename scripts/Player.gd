@@ -10,7 +10,7 @@ var velocity = Vector2()
 var health = 100
 #Array to check if player has a gun
 var has_guns = [true, false, false]
-#Array to store current gun stats (gun number, bullet speed, damage)
+#Array to store current gun stats (gun number(gun_stats[0]), bullet speed(gun_stats[1]), damage(gun_stats[2]))
 var gun_stats = [0, 500, 34]
 #array to store gun ammunition ammount
 var gun_ammo = [1, 0, 0]
@@ -37,16 +37,20 @@ func _process(delta):
 	var switch_weapon_2 = Input.is_action_just_pressed("switch_weapon_2")
 	var switch_weapon_3 = Input.is_action_just_pressed("switch_weapon_3")
 	
-	#Player Fires Weapon
-#	if fire_gun and gun_ammo[current_gun] > 0:
+	#Player Fires Weapon if player has enough ammo
 	if fire_gun and gun_ammo[gun_stats[0]] > 0:
 		print("fire")
+		#Bullet scene is loading into game
 		var new_bullet = load("res://bullet.tscn").instance()
 		$"../".add_child(new_bullet)
+		#Bullet position and rotation is set to the spawn point and rotation on the player
 		new_bullet.position = $"bullet_spawn".global_position
 		new_bullet.rotation = self.rotation
+		#Velocity of the bullet is set to the speed of the weapon's bullets
 		new_bullet.linear_velocity = Vector2(cos(self.rotation)*gun_stats[1], sin(self.rotation)*gun_stats[1])
+		#The parent of the bullet is set to the player
 		new_bullet.parent = self
+		#Check to see if player still has ammo for all guns besides starting weapon
 		if gun_stats[0] > 0:
 			self.gun_ammo[gun_stats[0]] -= 1
 			print(gun_ammo[gun_stats[0]])
@@ -59,6 +63,7 @@ func _process(delta):
 	if weapon_down:
 		print("down a weapon")
 	
+	#Switch player weapon when switch weapon key is pressed
 	if switch_weapon_1:
 		if has_guns[0] == true:
 			self.gun_stats = [0, 500, 34]
@@ -98,7 +103,10 @@ func _physics_process(delta):
 
 #On gun pickup, change gun variables
 func _on_Area2D_area_entered(area):
+	#Player's gun stats are changed to reflect the gun
 	self.gun_stats = [area.gun_number, area.bullet_speed, area.damage]
+	#Player has the gun
 	self.has_guns[area.gun_number] = true
+	#Player aquires base ammo for the gun
 	self.gun_ammo[area.gun_number] = area.gun_ammo_count
 	area.queue_free()

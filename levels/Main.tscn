@@ -41,19 +41,23 @@ texture = ExtResource( 1 )
 collision_mask = 15
 collision/safe_margin = 0.05
 
-[node name="enemy" parent="." index="2" instance=ExtResource( 3 )]
+[node name="enimies" type="Node" parent="." index="2"]
+
+editor/display_folded = true
+
+[node name="enemy" parent="enimies" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( 805.116, 325.649 )
 
-[node name="enemy2" parent="." index="3" instance=ExtResource( 3 )]
+[node name="enemy2" parent="enimies" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 776.005, 159.475 )
 
-[node name="enemy3" parent="." index="4" instance=ExtResource( 3 )]
+[node name="enemy3" parent="enimies" index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 807.765, 489.741 )
 
-[node name="gun_1" type="Area2D" parent="." index="5"]
+[node name="gun_1" type="Area2D" parent="." index="3"]
 
 editor/display_folded = true
 position = Vector2( 543.817, 293.954 )
@@ -86,7 +90,7 @@ scale = Vector2( 1, 3.1726 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="gun_2" type="Area2D" parent="." index="6"]
+[node name="gun_2" type="Area2D" parent="." index="4"]
 
 editor/display_folded = true
 position = Vector2( 314.156, 439.543 )
@@ -118,7 +122,7 @@ _sections_unfolded = [ "Transform" ]
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="walls" type="Node2D" parent="." index="7"]
+[node name="walls" type="Node" parent="." index="5"]
 
 editor/display_folded = true
 

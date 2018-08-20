@@ -5,9 +5,6 @@
 [ext_resource path="res://graphics/bullet.png" type="Texture" id=3]
 [ext_resource path="res://gui/GUI.tscn" type="PackedScene" id=4]
 
-
-
-
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
@@ -18,7 +15,7 @@ extents = Vector2( 29.3281, 28.8452 )
 custom_solver_bias = 0.0
 extents = Vector2( 32.1106, 32.283 )
 
-[node name="player" type="KinematicBody2D" index="0"]
+[node name="player" type="KinematicBody2D"]
 
 position = Vector2( 278.874, 231.712 )
 input_pickable = false

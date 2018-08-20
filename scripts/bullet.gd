@@ -4,6 +4,7 @@ extends RigidBody2D
 # var a = 2
 # var b = "textvar"
 
+#Parent player of the bullet will be set to this
 var parent
 
 func _ready():
