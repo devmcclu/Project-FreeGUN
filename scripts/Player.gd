@@ -5,6 +5,7 @@ extends KinematicBody2D
 # var b = "textvar"
 
 signal change_gun
+signal ammo_change
 
 #Base player variables and stats
 export (int) var speed = 200
@@ -57,6 +58,7 @@ func _process(delta):
 		if gun_stats[0] > 0:
 			self.gun_ammo[gun_stats[0]] -= 1
 			print(gun_ammo[gun_stats[0]])
+			emit_signal("ammo_change")
 			print("one less")
 		print(new_bullet.parent)
 	
@@ -70,18 +72,21 @@ func _process(delta):
 	if switch_weapon_1:
 		if has_guns[0] == true:
 			self.gun_stats = [0, 500, 34]
+			#Send signal to GUI about gun change
 			emit_signal("change_gun")
 		else:
 			pass
 	if switch_weapon_2:
 		if has_guns[1] == true:
 			gun_stats = [1, 100, 100]
+			#Send signal to GUI about gun change
 			emit_signal("change_gun")
 		else:
 			pass
 	if switch_weapon_3:
 		if has_guns[2] == true:
 			gun_stats = [2, 1000, 50]
+			#Send signal to GUI about gun change
 			emit_signal("change_gun")
 		else:
 			pass
@@ -116,4 +121,5 @@ func _on_Area2D_area_entered(area):
 	#Player aquires base ammo for the gun
 	self.gun_ammo[area.gun_number] = area.gun_ammo_count
 	emit_signal("change_gun")
+	emit_signal("ammo_change")
 	area.queue_free()

@@ -4,7 +4,7 @@ extends MarginContainer
 # var a = 2
 # var b = "textvar"
 
-var parent 
+var parent
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -22,4 +22,10 @@ func _on_player_change_gun():
 	#When the player changes guns, the GunName counter reflects what gun the player has
 	print("you changed bro")
 	$"VBoxContainer/HBoxContainer/GunName/Counter/Panel/Amount".text = str($"../../".gun_stats[0])
+	pass # replace with function body
+
+
+func _on_player_ammo_change():
+	print("you changed bro")
+	$"VBoxContainer/HBoxContainer/AmmoCounter/Counter/Panel/Amount".text = str($"../../".gun_ammo[$"../../".gun_stats[0]])
 	pass # replace with function body

@@ -15,7 +15,7 @@ extents = Vector2( 29.3281, 28.8452 )
 custom_solver_bias = 0.0
 extents = Vector2( 32.1106, 32.283 )
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" index="0"]
 
 position = Vector2( 278.874, 231.712 )
 input_pickable = false
@@ -94,6 +94,8 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="GUI" parent="CanvasLayer" index="0" instance=ExtResource( 4 )]
+
+[connection signal="ammo_change" from="." to="CanvasLayer/GUI" method="_on_player_ammo_change"]
 
 [connection signal="change_gun" from="." to="CanvasLayer/GUI" method="_on_player_change_gun"]
 
