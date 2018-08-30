@@ -4,7 +4,7 @@ extends RigidBody2D
 # var a = 2
 # var b = "textvar"
 
-#Parent player of the bullet will be set to this
+#Parent player of the bullet will be set to this in player.gd
 var parent
 
 func _ready():
@@ -17,19 +17,23 @@ func _ready():
 #	# Update game logic here.
 #	pass
 
-
+#Check the collision of the bullet with objects
 func _on_bullet_body_entered(body):
+	#Find the collision layer on contact
 	match body.collision_layer:
+		#Player/enemy collision layer
 		1:
 			if self.parent != body:
 				body.health -= parent.gun_stats[2]
 				print(body.health)
 				self.queue_free()
 			pass
+		#Wall collision layer
 		2:
 			self.queue_free()
 			print("nice wall")
 			pass
 
+#Delete bullet after timer runs out
 func _on_Timer_timeout():
 	self.queue_free()
