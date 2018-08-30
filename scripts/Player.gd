@@ -74,6 +74,7 @@ func _process(delta):
 			self.gun_stats = [0, 500, 34]
 			#Send signal to GUI about gun change
 			emit_signal("change_gun")
+			emit_signal("ammo_change")
 		else:
 			pass
 	if switch_weapon_2:
@@ -81,6 +82,7 @@ func _process(delta):
 			gun_stats = [1, 100, 100]
 			#Send signal to GUI about gun change
 			emit_signal("change_gun")
+			emit_signal("ammo_change")
 		else:
 			pass
 	if switch_weapon_3:
@@ -88,6 +90,7 @@ func _process(delta):
 			gun_stats = [2, 1000, 50]
 			#Send signal to GUI about gun change
 			emit_signal("change_gun")
+			emit_signal("ammo_change")
 		else:
 			pass
 
