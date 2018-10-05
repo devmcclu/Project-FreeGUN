@@ -104,6 +104,17 @@ remote func pre_start_game(spawn_points):
 remote func post_start_game():
 	get_tree().set_pause(false) # Unpause and unleash the game!
 
+remote func ready_to_start(id):
+	assert(get_tree().is_network_server())
+
+	if (not id in players_ready):
+		players_ready.append(id)
+
+	if (players_ready.size() == players.size()):
+		for p in players:
+			rpc_id(p, "post_start_game")
+		post_start_game()
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
