@@ -23,6 +23,19 @@ signal connection_succeeded()
 signal game_ended()
 signal game_error(what)
 
+# Callback from SceneTree
+func _player_disconnected(id):
+	if (get_tree().is_network_server()):
+		if (has_node("/root/world")): # Game is in progress
+			emit_signal("game_error", "Player " + players[id] + " disconnected")
+			end_game()
+		else: # Game is not in progress
+			# If we are the server, send to the new dude all the already registered players
+			unregister_player(id)
+			for p_id in players:
+				# Erase in the server
+				rpc_id(p_id, "unregister_player", id)
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
