@@ -74,3 +74,6 @@ func refresh_lobby():
 		get_node("players/list").add_item(p)
 
 	get_node("players/start").disabled=not get_tree().is_network_server()
+
+func _on_start_pressed():
+	gamestate.begin_game()
