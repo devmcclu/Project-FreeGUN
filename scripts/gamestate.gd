@@ -36,6 +36,12 @@ func _player_disconnected(id):
 				# Erase in the server
 				rpc_id(p_id, "unregister_player", id)
 
+# Callback from SceneTree, only for clients (not server)
+func _connected_ok():
+	# Registration of a client beings here, tell everyone that we are here
+	rpc("register_player", get_tree().get_network_unique_id(), player_name)
+	emit_signal("connection_succeeded")
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
