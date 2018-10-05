@@ -101,6 +101,9 @@ remote func pre_start_game(spawn_points):
 	elif players.size() == 0:
 		post_start_game()
 
+remote func post_start_game():
+	get_tree().set_pause(false) # Unpause and unleash the game!
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
