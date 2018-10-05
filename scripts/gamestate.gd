@@ -149,6 +149,15 @@ func begin_game():
 	
 	pre_start_game(spawn_points)
 
+func end_game():
+	if (has_node("/root/Main")): # Game is in progress
+		# End it
+		get_node("/root/Main").queue_free()
+
+	emit_signal("game_ended")
+	players.clear()
+	get_tree().set_network_peer(null) # End networking
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
