@@ -44,3 +44,7 @@ func _on_join_pressed():
 	var player_name = get_node("connect/name").text
 	gamestate.join_game(ip, player_name)
 	# refresh_lobby() gets called by the player_list_changed signal
+
+func _on_connection_success():
+	get_node("connect").hide()
+	get_node("players").show()
