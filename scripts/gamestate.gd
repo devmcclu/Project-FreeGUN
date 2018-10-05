@@ -47,6 +47,11 @@ func _server_disconnected():
 	emit_signal("game_error", "Server disconnected")
 	end_game()
 
+# Callback from SceneTree, only for clients (not server)
+func _connected_fail():
+	get_tree().set_network_peer(null) # Remove peer
+	emit_signal("connection_failed")
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
