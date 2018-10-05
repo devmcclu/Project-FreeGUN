@@ -18,6 +18,7 @@ var gun_stats = [0, 500, 34]
 #array to store gun ammunition ammount
 var gun_ammo = [1, 0, 0]
 
+slave var slave_velocity = Vector2()
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -97,15 +98,18 @@ func _process(delta):
 func get_input():
 	#Create controlable Vector2 for player movement input
 	velocity = Vector2()
-	#Change movement Vector2 variables on player input
-	if Input.is_action_pressed('player_move_right'):
-		velocity.x += 1
-	if Input.is_action_pressed('player_move_left'):
-		velocity.x -= 1
-	if Input.is_action_pressed('player_move_down'):
-		velocity.y += 1
-	if Input.is_action_pressed('player_move_up'):
-		velocity.y -= 1
+	if (is_network_master()):
+		#Change movement Vector2 variables on player input
+		if Input.is_action_pressed('player_move_right'):
+			velocity.x += 1
+		if Input.is_action_pressed('player_move_left'):
+			velocity.x -= 1
+		if Input.is_action_pressed('player_move_down'):
+			velocity.y += 1
+		if Input.is_action_pressed('player_move_up'):
+			velocity.y -= 1
+	else:
+		velocity = slave_velocity
 	#Normalize player movement input to make sure speed is constant
 	velocity = velocity.normalized() * speed
 
