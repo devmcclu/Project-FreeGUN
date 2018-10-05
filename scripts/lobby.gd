@@ -14,4 +14,14 @@ func _ready():
 	gamestate.connect("game_error", self, "_on_game_error")
 
 func _on_host_pressed():
-	pass # replace with function body
+	if (get_node("connect/name").text == ""):
+		get_node("connect/error_label").text="Invalid name!"
+		return
+
+	get_node("connect").hide()
+	get_node("players").show()
+	get_node("connect/error_label").text=""
+
+	var player_name = get_node("connect/name").text
+	gamestate.host_game(player_name)
+	refresh_lobby()
