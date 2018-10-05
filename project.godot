@@ -14,6 +14,10 @@ config/name="FreeGUN"
 run/main_scene="res://levels/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+gamestate="*res://scripts/gamestate.gd"
+
 [debug]
 
 settings/stdout/print_fps=true
