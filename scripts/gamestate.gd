@@ -42,6 +42,11 @@ func _connected_ok():
 	rpc("register_player", get_tree().get_network_unique_id(), player_name)
 	emit_signal("connection_succeeded")
 
+# Callback from SceneTree, only for clients (not server)
+func _server_disconnected():
+	emit_signal("game_error", "Server disconnected")
+	end_game()
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
