@@ -121,6 +121,12 @@ func host_game(new_player_name):
 	host.create_server(DEFAULT_PORT, MAX_PEERS)
 	get_tree().set_network_peer(host)
 
+func join_game(ip, new_player_name):
+	player_name = new_player_name
+	var host = NetworkedMultiplayerENet.new()
+	host.create_client(ip, DEFAULT_PORT)
+	get_tree().set_network_peer(host)
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
