@@ -48,3 +48,8 @@ func _on_join_pressed():
 func _on_connection_success():
 	get_node("connect").hide()
 	get_node("players").show()
+
+func _on_connection_failed():
+	get_node("connect/host").disabled=false
+	get_node("connect/join").disabled=false
+	get_node("connect/error_label").set_text("Connection failed.")
