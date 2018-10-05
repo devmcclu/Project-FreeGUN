@@ -64,3 +64,13 @@ func _on_game_ended():
 func _on_game_error(errtxt):
 	get_node("error").dialog_text = errtxt
 	get_node("error").popup_centered_minsize()
+
+func refresh_lobby():
+	var players = gamestate.get_player_list()
+	players.sort()
+	get_node("players/list").clear()
+	get_node("players/list").add_item(gamestate.get_player_name() + " (You)")
+	for p in players:
+		get_node("players/list").add_item(p)
+
+	get_node("players/start").disabled=not get_tree().is_network_server()
