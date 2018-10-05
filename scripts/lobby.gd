@@ -28,4 +28,19 @@ func _on_host_pressed():
 
 
 func _on_join_pressed():
-	pass # replace with function body
+	if (get_node("connect/name").text == ""):
+		get_node("connect/error_label").text="Invalid name!"
+		return
+
+	var ip = get_node("connect/ip").text
+	if (not ip.is_valid_ip_address()):
+		get_node("connect/error_label").text="Invalid IPv4 address!"
+		return
+
+	get_node("connect/error_label").text=""
+	get_node("connect/host").disabled=true
+	get_node("connect/join").disabled=true
+
+	var player_name = get_node("connect/name").text
+	gamestate.join_game(ip, player_name)
+	# refresh_lobby() gets called by the player_list_changed signal
