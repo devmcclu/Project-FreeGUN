@@ -311,4 +311,6 @@ window_title = "Alert!"
 resizable = false
 dialog_hide_on_ok = true
 
+[connection signal="pressed" from="connect/host" to="." method="_on_host_pressed"]
+
 
