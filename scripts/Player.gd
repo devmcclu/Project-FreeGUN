@@ -130,3 +130,7 @@ func _on_Area2D_area_entered(area):
 	emit_signal("change_gun")
 	emit_signal("ammo_change")
 	area.queue_free()
+
+func set_player_name(new_name):
+	#get_node("label").set_text(new_name)
+	pass
