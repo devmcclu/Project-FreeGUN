@@ -115,6 +115,12 @@ remote func ready_to_start(id):
 			rpc_id(p, "post_start_game")
 		post_start_game()
 
+func host_game(new_player_name):
+	player_name = new_player_name
+	var host = NetworkedMultiplayerENet.new()
+	host.create_server(DEFAULT_PORT, MAX_PEERS)
+	get_tree().set_network_peer(host)
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
