@@ -65,6 +65,10 @@ remote func register_player(id, new_player_name):
 	players[id] = new_player_name
 	emit_signal("player_list_changed")
 
+remote func unregister_player(id):
+	players.erase(id)
+	emit_signal("player_list_changed")
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
