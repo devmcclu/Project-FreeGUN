@@ -53,3 +53,10 @@ func _on_connection_failed():
 	get_node("connect/host").disabled=false
 	get_node("connect/join").disabled=false
 	get_node("connect/error_label").set_text("Connection failed.")
+
+func _on_game_ended():
+	show()
+	get_node("connect").show()
+	get_node("players").hide()
+	get_node("connect/host").disabled=false
+	get_node("connect/join").disabled
