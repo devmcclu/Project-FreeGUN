@@ -69,6 +69,38 @@ remote func unregister_player(id):
 	players.erase(id)
 	emit_signal("player_list_changed")
 
+remote func pre_start_game(spawn_points):
+	# Change scene
+	var world = load("res://levels/multiplayer_map.tscn").instance()
+	get_tree().get_root().add_child(world)
+
+	get_tree().get_root().get_node("lobby").hide()
+
+	var player_scene = load("res://characters/player.tscn")
+
+	for p_id in spawn_points:
+		var spawn_pos = world.get_node("spawn_points/" + str(spawn_points[p_id])).position
+		var player = player_scene.instance()
+		
+		player.set_name(str(p_id)) # Use unique ID as node name
+		player.position=spawn_pos
+		player.set_network_master(p_id) #set unique id as master
+
+		if (p_id == get_tree().get_network_unique_id()):
+			# If node for this peer id, set name
+			player.set_player_name(player_name)
+		else:
+			# Otherwise set name from peer
+			player.set_player_name(players[p_id])
+
+		world.get_node("players").add_child(player)
+	
+	if (not get_tree().is_network_server()):
+		# Tell server we are ready to start
+		rpc_id(1, "ready_to_start", get_tree().get_network_unique_id())
+	elif players.size() == 0:
+		post_start_game()
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
