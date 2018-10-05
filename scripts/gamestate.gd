@@ -52,6 +52,19 @@ func _connected_fail():
 	get_tree().set_network_peer(null) # Remove peer
 	emit_signal("connection_failed")
 
+# Lobby management functions
+
+remote func register_player(id, new_player_name):
+	if (get_tree().is_network_server()):
+		# If we are the server, let everyone know about the new player
+		rpc_id(id, "register_player", 1, player_name) # Send myself to new dude
+		for p_id in players: # Then, for each remote player
+			rpc_id(id, "register_player", p_id, players[p_id]) # Send player to new dude
+			rpc_id(p_id, "register_player", id, new_player_name) # Send new dude to player
+
+	players[id] = new_player_name
+	emit_signal("player_list_changed")
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
