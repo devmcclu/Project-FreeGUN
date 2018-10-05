@@ -60,3 +60,7 @@ func _on_game_ended():
 	get_node("players").hide()
 	get_node("connect/host").disabled=false
 	get_node("connect/join").disabled
+
+func _on_game_error(errtxt):
+	get_node("error").dialog_text = errtxt
+	get_node("error").popup_centered_minsize()
