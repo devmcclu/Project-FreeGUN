@@ -146,6 +146,8 @@ func begin_game():
 	# Call to pre-start game with the spawn points
 	for p in players:
 		rpc_id(p, "pre_start_game", spawn_points)
+	
+	pre_start_game(spawn_points)
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
