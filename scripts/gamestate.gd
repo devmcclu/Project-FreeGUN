@@ -127,6 +127,12 @@ func join_game(ip, new_player_name):
 	host.create_client(ip, DEFAULT_PORT)
 	get_tree().set_network_peer(host)
 
+func get_player_list():
+	return players.values()
+
+func get_player_name():
+	return player_name
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
