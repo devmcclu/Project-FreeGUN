@@ -36,6 +36,8 @@ texture = ExtResource( 1 )
 
 [node name="spawn_points" type="Node2D" parent="." index="1"]
 
+editor/display_folded = true
+
 [node name="1" type="Position2D" parent="spawn_points" index="0"]
 
 position = Vector2( -150, 90 )
@@ -268,5 +270,7 @@ shape = SubResource( 4 )
 scale = Vector2( 24.4, 1 )
 texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="players" type="Node2D" parent="." index="5"]
 
 
