@@ -18,6 +18,7 @@ var gun_stats = [0, 500, 34]
 #array to store gun ammunition ammount
 var gun_ammo = [1, 0, 0]
 
+slave var slave_pos = Vector2()
 slave var slave_velocity = Vector2()
 
 func _ready():
@@ -108,7 +109,11 @@ func get_input():
 			velocity.y += 1
 		if Input.is_action_pressed('player_move_up'):
 			velocity.y -= 1
+		
+		rset("slave_velocity", velocity)
+		rset("slave_pos", position)
 	else:
+		position = slave_pos
 		velocity = slave_velocity
 	#Normalize player movement input to make sure speed is constant
 	velocity = velocity.normalized() * speed
@@ -116,6 +121,8 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 	move_and_slide(velocity)
+	if (not is_network_master()):
+		slave_pos = position # To avoid jitter
 	#Player looks at mouse
 	self.look_at(get_global_mouse_position())
 
