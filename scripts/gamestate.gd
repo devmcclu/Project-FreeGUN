@@ -24,6 +24,12 @@ signal game_ended()
 signal game_error(what)
 
 # Callback from SceneTree
+func _player_connected(id):
+	# This is not used in this demo, because _connected_ok is called for clients
+	# on success and will do the job.
+	pass
+
+# Callback from SceneTree
 func _player_disconnected(id):
 	if (get_tree().is_network_server()):
 		if (has_node("/root/world")): # Game is in progress

@@ -36,13 +36,11 @@ texture = ExtResource( 1 )
 
 [node name="spawn_points" type="Node2D" parent="." index="1"]
 
-editor/display_folded = true
-
-[node name="1" type="Position2D" parent="spawn_points" index="0"]
+[node name="0" type="Position2D" parent="spawn_points" index="0"]
 
 position = Vector2( -150, 90 )
 
-[node name="2" type="Position2D" parent="spawn_points" index="1"]
+[node name="1" type="Position2D" parent="spawn_points" index="1"]
 
 position = Vector2( 120, 90 )
 
