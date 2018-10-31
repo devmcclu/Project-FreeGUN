@@ -18,6 +18,8 @@ var gun_stats = [0, 500, 34]
 #array to store gun ammunition ammount
 var gun_ammo = [1, 0, 0]
 
+slave var slave_pos = Vector2()
+slave var slave_velocity = Vector2()
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -97,21 +99,30 @@ func _process(delta):
 func get_input():
 	#Create controlable Vector2 for player movement input
 	velocity = Vector2()
-	#Change movement Vector2 variables on player input
-	if Input.is_action_pressed('player_move_right'):
-		velocity.x += 1
-	if Input.is_action_pressed('player_move_left'):
-		velocity.x -= 1
-	if Input.is_action_pressed('player_move_down'):
-		velocity.y += 1
-	if Input.is_action_pressed('player_move_up'):
-		velocity.y -= 1
+	if (is_network_master()):
+		#Change movement Vector2 variables on player input
+		if Input.is_action_pressed('player_move_right'):
+			velocity.x += 1
+		if Input.is_action_pressed('player_move_left'):
+			velocity.x -= 1
+		if Input.is_action_pressed('player_move_down'):
+			velocity.y += 1
+		if Input.is_action_pressed('player_move_up'):
+			velocity.y -= 1
+		
+		rset("slave_velocity", velocity)
+		rset("slave_pos", position)
+	else:
+		position = slave_pos
+		velocity = slave_velocity
 	#Normalize player movement input to make sure speed is constant
 	velocity = velocity.normalized() * speed
 
 func _physics_process(delta):
 	get_input()
 	move_and_slide(velocity)
+	if (not is_network_master()):
+		slave_pos = position # To avoid jitter
 	#Player looks at mouse
 	self.look_at(get_global_mouse_position())
 
@@ -126,3 +137,7 @@ func _on_Area2D_area_entered(area):
 	emit_signal("change_gun")
 	emit_signal("ammo_change")
 	area.queue_free()
+
+func set_player_name(new_name):
+	#get_node("label").set_text(new_name)
+	pass
