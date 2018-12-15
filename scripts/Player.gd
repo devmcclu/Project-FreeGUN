@@ -42,25 +42,8 @@ func _process(delta):
 	var switch_weapon_3 = Input.is_action_just_pressed("switch_weapon_3")
 	
 	#Player Fires Weapon if player has enough ammo
-	if fire_gun and gun_ammo[gun_stats[0]] > 0:
-		print("fire")
-		#Bullet scene is loading into game
-		var new_bullet = load("res://bullet.tscn").instance()
-		$"../".add_child(new_bullet)
-		#Bullet position and rotation is set to the spawn point and rotation on the player
-		new_bullet.position = $"bullet_spawn".global_position
-		new_bullet.rotation = self.rotation
-		#Velocity of the bullet is set to the speed of the weapon's bullets
-		new_bullet.linear_velocity = Vector2(cos(self.rotation)*gun_stats[1], sin(self.rotation)*gun_stats[1])
-		#The parent of the bullet is set to the player
-		new_bullet.parent = self
-		#Check to see if player still has ammo for all guns besides starting weapon
-		if gun_stats[0] > 0:
-			self.gun_ammo[gun_stats[0]] -= 1
-			print(gun_ammo[gun_stats[0]])
-			emit_signal("ammo_change")
-			print("one less")
-		print(new_bullet.parent)
+	if fire_gun:
+		shoot()
 	
 	#Switch weapons with scroll wheel
 	if weapon_up:
@@ -114,6 +97,27 @@ func _physics_process(delta):
 	move_and_slide(velocity)
 	#Player looks at mouse
 	self.look_at(get_global_mouse_position())
+
+sync func shoot():
+	if gun_ammo[gun_stats[0]] > 0:
+		print("fire")
+		#Bullet scene is loading into game
+		var new_bullet = load("res://bullet.tscn").instance()
+		$"../".add_child(new_bullet)
+		#Bullet position and rotation is set to the spawn point and rotation on the player
+		new_bullet.position = $"bullet_spawn".global_position
+		new_bullet.rotation = self.rotation
+		#Velocity of the bullet is set to the speed of the weapon's bullets
+		new_bullet.linear_velocity = Vector2(cos(self.rotation)*gun_stats[1], sin(self.rotation)*gun_stats[1])
+		#The parent of the bullet is set to the player
+		new_bullet.parent = self
+		#Check to see if player still has ammo for all guns besides starting weapon
+		if gun_stats[0] > 0:
+			self.gun_ammo[gun_stats[0]] -= 1
+			print(gun_ammo[gun_stats[0]])
+			emit_signal("ammo_change")
+			print("one less")
+		print(new_bullet.parent)
 
 #On gun pickup, change gun variables
 func _on_Area2D_area_entered(area):
