@@ -28,12 +28,10 @@ func _on_bullet_body_entered(body):
 				body.health_check()
 				print(body.health)
 				self.queue_free()
-			pass
 		#Wall collision layer
 		2:
 			self.queue_free()
 			print("nice wall")
-			pass
 
 #Delete bullet after timer runs out
 func _on_Timer_timeout():

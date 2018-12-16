@@ -29,7 +29,6 @@ func _ready():
 	# Initialization here
 	emit_signal("change_gun")
 	emit_signal("health_change")
-	pass
 
 func health_check():
 	if is_network_master():
@@ -68,24 +67,18 @@ func _process(delta):
 			#Send signal to GUI about gun change
 			emit_signal("change_gun")
 			emit_signal("ammo_change")
-		else:
-			pass
 	if switch_weapon_2:
 		if has_guns[1] == true:
 			gun_stats = [1, 100, 100]
 			#Send signal to GUI about gun change
 			emit_signal("change_gun")
 			emit_signal("ammo_change")
-		else:
-			pass
 	if switch_weapon_3:
 		if has_guns[2] == true:
 			gun_stats = [2, 1000, 50]
 			#Send signal to GUI about gun change
 			emit_signal("change_gun")
 			emit_signal("ammo_change")
-		else:
-			pass
 
 func get_input():
 	#Create controlable Vector2 for player movement input
@@ -133,8 +126,6 @@ sync func shoot():
 func _physics_process(delta):
 	get_input()
 	move_and_slide(velocity)
-#	if (not is_network_master()):
-#		slave_pos = position # To avoid jitter
 	#Player looks at mouse
 	if is_network_master():
 		self.look_at(get_global_mouse_position())

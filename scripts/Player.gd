@@ -58,24 +58,18 @@ func _process(delta):
 			#Send signal to GUI about gun change
 			emit_signal("change_gun")
 			emit_signal("ammo_change")
-		else:
-			pass
 	if switch_weapon_2:
 		if has_guns[1] == true:
 			gun_stats = [1, 100, 100]
 			#Send signal to GUI about gun change
 			emit_signal("change_gun")
 			emit_signal("ammo_change")
-		else:
-			pass
 	if switch_weapon_3:
 		if has_guns[2] == true:
 			gun_stats = [2, 1000, 50]
 			#Send signal to GUI about gun change
 			emit_signal("change_gun")
 			emit_signal("ammo_change")
-		else:
-			pass
 
 func get_input():
 	#Create controlable Vector2 for player movement input

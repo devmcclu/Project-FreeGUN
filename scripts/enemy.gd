@@ -16,7 +16,6 @@ func _ready():
 func _process(delta):
 	if self.health <= 0:
 		self.queue_free()
-	pass
 
 
 func _on_ShootTimer_timeout():
@@ -32,4 +31,3 @@ func _on_ShootTimer_timeout():
 		print(gun_ammo[gun_stats[0]])
 		print("one less")
 	print(new_bullet.parent)
-	pass # replace with function body
