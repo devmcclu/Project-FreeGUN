@@ -30,3 +30,9 @@ func _on_player_ammo_change():
 	print("you changed bro")
 	$"VBoxContainer/HBoxContainer/AmmoCounter/Counter/Panel/Amount".text = str($"../../".gun_ammo[$"../../".gun_stats[0]])
 	pass # replace with function body
+
+
+func _on_player_health_change():
+	print("dying")
+	$"VBoxContainer/HBoxContainer/HealthCounter/Counter/Panel/Amount".text = str($"../../".health)
+	pass # replace with function body

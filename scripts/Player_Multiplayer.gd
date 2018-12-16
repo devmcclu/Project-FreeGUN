@@ -6,6 +6,7 @@ extends KinematicBody2D
 
 signal change_gun
 signal ammo_change
+signal health_change
 
 #Base player variables and stats
 export (int) var speed = 200
@@ -21,20 +22,25 @@ var gun_ammo = [1, 0, 0]
 slave var slave_pos = Vector2()
 slave var slave_velocity = Vector2()
 slave var slave_rotation = 0
+slave var slave_health = 100
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	emit_signal("change_gun")
+	emit_signal("health_change")
 	pass
 
 func health_check():
+	if is_network_master():
+		emit_signal("health_change")
+	else:
+		slave_health = health
 	if self.health <= 0:
 		self.queue_free()
 
 func _process(delta):
 	#Player fire variable
-	health_check()
 	var fire_gun = Input.is_action_just_pressed("fire_gun")
 	
 	#PLayer switch weapon variables

@@ -25,6 +25,7 @@ func _on_bullet_body_entered(body):
 		1:
 			if self.parent != body:
 				body.health -= parent.gun_stats[2]
+				body.health_check()
 				print(body.health)
 				self.queue_free()
 			pass
