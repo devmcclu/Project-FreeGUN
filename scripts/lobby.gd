@@ -14,7 +14,7 @@ func _ready():
 	gamestate.connect("game_error", self, "_on_game_error")
 
 func _on_host_pressed():
-	if (get_node("connect/name").text == ""):
+	if get_node("connect/name").text == "":
 		get_node("connect/error_label").text="Invalid name!"
 		return
 
@@ -28,12 +28,12 @@ func _on_host_pressed():
 
 
 func _on_join_pressed():
-	if (get_node("connect/name").text == ""):
+	if get_node("connect/name").text == "":
 		get_node("connect/error_label").text="Invalid name!"
 		return
 
 	var ip = get_node("connect/ip").text
-	if (not ip.is_valid_ip_address()):
+	if not ip.is_valid_ip_address():
 		get_node("connect/error_label").text="Invalid IPv4 address!"
 		return
 

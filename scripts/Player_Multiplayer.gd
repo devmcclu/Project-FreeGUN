@@ -38,6 +38,7 @@ func health_check():
 		emit_signal("health_change")
 	else:
 		slave_health = health
+
 	if self.health <= 0:
 		self.queue_free()
 
@@ -86,7 +87,7 @@ func _process(delta):
 func get_input():
 	#Create controlable Vector2 for player movement input
 	velocity = Vector2()
-	if (is_network_master()):
+	if is_network_master():
 		#Change movement Vector2 variables on player input
 		if Input.is_action_pressed('player_move_right'):
 			velocity.x += 1

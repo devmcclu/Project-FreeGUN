@@ -12,11 +12,6 @@ func _ready():
 	# Initialization here
 	pass
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
-
 #Check the collision of the bullet with objects
 func _on_bullet_body_entered(body):
 	#Find the collision layer on contact
