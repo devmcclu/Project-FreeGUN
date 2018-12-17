@@ -7,6 +7,7 @@ extends Control
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
+	#Connect gamestate signals to lobby functions
 	gamestate.connect("connection_failed", self, "_on_connection_failed")
 	gamestate.connect("connection_succeeded", self, "_on_connection_success")
 	gamestate.connect("player_list_changed", self, "refresh_lobby")
@@ -14,6 +15,7 @@ func _ready():
 	gamestate.connect("game_error", self, "_on_game_error")
 
 func _on_host_pressed():
+	#Don't host if no name is entered
 	if get_node("connect/name").text == "":
 		get_node("connect/error_label").text="Invalid name!"
 		return
@@ -28,6 +30,7 @@ func _on_host_pressed():
 
 
 func _on_join_pressed():
+	#Don't join if no name is entered
 	if get_node("connect/name").text == "":
 		get_node("connect/error_label").text="Invalid name!"
 		return
