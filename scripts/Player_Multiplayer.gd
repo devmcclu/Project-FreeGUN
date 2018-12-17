@@ -29,6 +29,9 @@ func _ready():
 	# Initialization here
 	emit_signal("change_gun")
 	emit_signal("health_change")
+	
+	if is_network_master():
+		$"Camera2D".make_current()
 
 func health_check():
 	if is_network_master():
