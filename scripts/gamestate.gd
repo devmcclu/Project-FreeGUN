@@ -31,8 +31,8 @@ func _player_connected(id):
 
 # Callback from SceneTree
 func _player_disconnected(id):
-	if (get_tree().is_network_server()):
-		if (has_node("/root/world")): # Game is in progress
+	if get_tree().is_network_server():
+		if has_node("/root/world"): # Game is in progress
 			emit_signal("game_error", "Player " + players[id] + " disconnected")
 			end_game()
 		else: # Game is not in progress
@@ -61,7 +61,7 @@ func _connected_fail():
 # Lobby management functions
 
 remote func register_player(id, new_player_name):
-	if (get_tree().is_network_server()):
+	if get_tree().is_network_server():
 		# If we are the server, let everyone know about the new player
 		rpc_id(id, "register_player", 1, player_name) # Send myself to new dude
 		for p_id in players: # Then, for each remote player
@@ -92,7 +92,7 @@ remote func pre_start_game(spawn_points):
 		player.position=spawn_pos
 		player.set_network_master(p_id) #set unique id as master
 
-		if (p_id == get_tree().get_network_unique_id()):
+		if p_id == get_tree().get_network_unique_id():
 			# If node for this peer id, set name
 			player.set_player_name(player_name)
 		else:
@@ -101,7 +101,7 @@ remote func pre_start_game(spawn_points):
 
 		world.get_node("players").add_child(player)
 	
-	if (not get_tree().is_network_server()):
+	if not get_tree().is_network_server():
 		# Tell server we are ready to start
 		rpc_id(1, "ready_to_start", get_tree().get_network_unique_id())
 	elif players.size() == 0:
@@ -115,10 +115,10 @@ var players_ready = []
 remote func ready_to_start(id):
 	assert(get_tree().is_network_server())
 
-	if (not id in players_ready):
+	if not id in players_ready:
 		players_ready.append(id)
 
-	if (players_ready.size() == players.size()):
+	if players_ready.size() == players.size():
 		for p in players:
 			rpc_id(p, "post_start_game")
 		post_start_game()
@@ -158,7 +158,7 @@ func begin_game():
 	pre_start_game(spawn_points)
 
 func end_game():
-	if (has_node("/root/Main")): # Game is in progress
+	if has_node("/root/Main"): # Game is in progress
 		# End it
 		get_node("/root/Main").queue_free()
 
