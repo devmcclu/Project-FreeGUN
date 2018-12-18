@@ -10,6 +10,7 @@ var parent
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
+	set_as_toplevel(true)
 	pass
 
 #Check the collision of the bullet with objects
