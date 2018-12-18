@@ -32,6 +32,7 @@ func _ready():
 	
 	if is_network_master():
 		$"Camera2D".make_current()
+		$"CanvasLayer/GUI".visible = true
 
 func health_check():
 	if is_network_master():

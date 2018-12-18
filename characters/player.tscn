@@ -121,6 +121,8 @@ _sections_unfolded = [ "Rect", "custom_constants" ]
 
 [node name="GUI" parent="CanvasLayer" index="1" instance=ExtResource( 5 )]
 
+visible = false
+
 [connection signal="ammo_change" from="." to="CanvasLayer/GUI" method="_on_player_ammo_change"]
 
 [connection signal="change_gun" from="." to="CanvasLayer/GUI" method="_on_player_change_gun"]
