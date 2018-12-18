@@ -290,7 +290,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect" ]
 
-[node name="AcceptDialog" type="AcceptDialog" parent="." index="2"]
+[node name="error" type="AcceptDialog" parent="." index="2"]
 
 visible = false
 anchor_left = 0.0
