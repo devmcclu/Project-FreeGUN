@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/player_multiplayer.gd" type="Script" id=1]
 [ext_resource path="res://graphics/Player.png" type="Texture" id=2]
 [ext_resource path="res://graphics/bullet.png" type="Texture" id=3]
-[ext_resource path="res://gui/GUI.tscn" type="PackedScene" id=4]
-
+[ext_resource path="res://Iso_Dark/iso_dark.theme" type="Theme" id=4]
+[ext_resource path="res://gui/GUI.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -18,7 +18,6 @@ extents = Vector2( 32.1106, 32.283 )
 
 [node name="player" type="KinematicBody2D" index="0"]
 
-position = Vector2( 278.874, 231.712 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 7
@@ -94,7 +93,33 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="GUI" parent="CanvasLayer" index="0" instance=ExtResource( 4 )]
+[node name="label" type="Label" parent="CanvasLayer" index="0"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 620.0
+margin_top = 300.0
+margin_right = 660.0
+margin_bottom = 314.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = ExtResource( 4 )
+text = "Name"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_constants" ]
+
+[node name="GUI" parent="CanvasLayer" index="1" instance=ExtResource( 5 )]
 
 [connection signal="ammo_change" from="." to="CanvasLayer/GUI" method="_on_player_ammo_change"]
 

@@ -152,5 +152,4 @@ func _on_Area2D_area_entered(area):
 	area.queue_free()
 
 func set_player_name(new_name):
-	#get_node("label").set_text(new_name)
-	pass
+	get_node("CanvasLayer/label").set_text(new_name)
