@@ -271,4 +271,11 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="players" type="Node2D" parent="." index="5"]
 
+[node name="Timer" type="Timer" parent="." index="6"]
+
+process_mode = 1
+wait_time = 60.0
+one_shot = false
+autostart = true
+
 
