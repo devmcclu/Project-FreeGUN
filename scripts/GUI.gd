@@ -11,6 +11,8 @@ func _ready():
 	# Initialization here
 	pass
 
+func _process(delta):
+	$"VBoxContainer/HBoxContainer2/Timer/Counter/Panel/Amount".text = str($"../../../../Timer".time_left)
 
 func _on_player_change_gun():
 	#When the player changes guns, the GunName counter reflects what gun the player has
