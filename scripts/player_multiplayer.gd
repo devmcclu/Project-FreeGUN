@@ -4,9 +4,9 @@ extends KinematicBody2D
 # var a = 2
 # var b = "textvar"
 
-signal change_gun
-signal ammo_change
-signal health_change
+signal gun_changed
+signal ammo_changed
+signal health_changed
 
 #Base player variables and stats
 export (int) var speed = 200
@@ -27,8 +27,8 @@ slave var slave_health = 100
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	emit_signal("change_gun")
-	emit_signal("health_change")
+	emit_signal("gun_changed")
+	emit_signal("health_changed")
 	
 	if is_network_master():
 		$"Camera2D".make_current()
@@ -36,7 +36,7 @@ func _ready():
 
 func health_check():
 	if is_network_master():
-		emit_signal("health_change")
+		emit_signal("health_changed")
 	else:
 		slave_health = health
 
@@ -148,8 +148,8 @@ func _on_Area2D_area_entered(area):
 	self.has_guns[area.gun_number] = true
 	#Player aquires base ammo for the gun
 	self.gun_ammo[area.gun_number] = area.gun_ammo_count
-	emit_signal("change_gun")
-	emit_signal("ammo_change")
+	emit_signal("gun_changed")
+	emit_signal("ammo_changed")
 	area.queue_free()
 
 func set_player_name(new_name):

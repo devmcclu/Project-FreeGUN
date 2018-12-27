@@ -123,11 +123,11 @@ _sections_unfolded = [ "Rect", "custom_constants" ]
 
 visible = false
 
-[connection signal="ammo_change" from="." to="CanvasLayer/GUI" method="_on_player_ammo_change"]
+[connection signal="ammo_changed" from="." to="CanvasLayer/GUI" method="_on_player_ammo_changed"]
 
-[connection signal="change_gun" from="." to="CanvasLayer/GUI" method="_on_player_change_gun"]
+[connection signal="gun_changed" from="." to="CanvasLayer/GUI" method="_on_player_gun_changed"]
 
-[connection signal="health_change" from="." to="CanvasLayer/GUI" method="_on_player_health_change"]
+[connection signal="health_changed" from="." to="CanvasLayer/GUI" method="_on_player_health_changed"]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 
