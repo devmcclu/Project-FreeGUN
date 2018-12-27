@@ -12,7 +12,7 @@ func _ready():
 	pass
 
 func _process(delta):
-	if $"../../../../Timer":
+	if $"../../../../".has_node("Timer"):
 		$"VBoxContainer/HBoxContainer2/Timer/Counter/Panel/Amount".text = str($"../../../../Timer".time_left)
 
 func _on_player_gun_changed():
