@@ -25,6 +25,8 @@ func _ready():
 	# Initialization here
 	emit_signal("gun_changed")
 	emit_signal("health_changed")
+	$"Camera2D".make_current()
+	$"CanvasLayer/GUI".visible = true
 
 func health_check():
 	emit_signal("health_changed")
