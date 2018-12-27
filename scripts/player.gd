@@ -111,7 +111,7 @@ func shoot():
 		if gun_stats[0] > 0:
 			self.gun_ammo[gun_stats[0]] -= 1
 			print(gun_ammo[gun_stats[0]])
-			emit_signal("ammo_change")
+			emit_signal("ammo_changed")
 			print("one less")
 		print(new_bullet.parent)
 
