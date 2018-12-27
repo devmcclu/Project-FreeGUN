@@ -35,7 +35,6 @@ func health_check():
 
 func _process(delta):
 	#Player fire variable
-	health_check()
 	var fire_gun = Input.is_action_just_pressed("fire_gun")
 	
 	#PLayer switch weapon variables
