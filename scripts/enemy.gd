@@ -31,3 +31,7 @@ func _on_ShootTimer_timeout():
 		print(gun_ammo[gun_stats[0]])
 		print("one less")
 	print(new_bullet.parent)
+
+func health_check():
+	if self.health <= 0:
+		self.queue_free()
