@@ -20,7 +20,7 @@ func _process(delta):
 
 func _on_ShootTimer_timeout():
 	print("fire")
-	var new_bullet = load("res://bullet.tscn").instance()
+	var new_bullet = load("res://bullet/bullet.tscn").instance()
 	$"../".add_child(new_bullet)
 	new_bullet.position = $"bullet_spawn".global_position
 	new_bullet.rotation = self.rotation
