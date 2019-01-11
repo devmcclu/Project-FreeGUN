@@ -10,12 +10,8 @@ var parent
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
+	set_as_toplevel(true)
 	pass
-
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
 
 #Check the collision of the bullet with objects
 func _on_bullet_body_entered(body):
@@ -25,14 +21,13 @@ func _on_bullet_body_entered(body):
 		1:
 			if self.parent != body:
 				body.health -= parent.gun_stats[2]
+				body.health_check()
 				print(body.health)
 				self.queue_free()
-			pass
 		#Wall collision layer
 		2:
 			self.queue_free()
 			print("nice wall")
-			pass
 
 #Delete bullet after timer runs out
 func _on_Timer_timeout():

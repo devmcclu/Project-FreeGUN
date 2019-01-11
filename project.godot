@@ -11,12 +11,12 @@ config_version=3
 [application]
 
 config/name="FreeGUN"
-run/main_scene="res://levels/Main.tscn"
+run/main_scene="res://lobby/lobby.tscn"
 config/icon="res://icon.png"
 
-[debug]
+[autoload]
 
-settings/stdout/print_fps=true
+gamestate="*res://scripts/gamestate.gd"
 
 [display]
 
