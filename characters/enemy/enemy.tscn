@@ -9,7 +9,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 32.152, 31.9393 )
 
-[node name="enemy" type="KinematicBody2D"]
+[node name="Enemy" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -19,7 +19,7 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform" ]
 speed = 200
 
-[node name="enemy" type="Sprite" parent="." index="0"]
+[node name="EnemySprite" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
@@ -28,20 +28,20 @@ _sections_unfolded = [ "Transform" ]
 
 shape = SubResource( 1 )
 
-[node name="shoot_timer" type="Timer" parent="." index="2"]
+[node name="ShootTimer" type="Timer" parent="." index="2"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = true
 
-[node name="bullet_spawn" type="Sprite" parent="." index="3"]
+[node name="BulletSpawn" type="Sprite" parent="." index="3"]
 
 position = Vector2( 48, 0 )
 rotation = 1.5708
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[connection signal="timeout" from="shoot_timer" to="." method="_on_ShootTimer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
 
 
