@@ -80,7 +80,7 @@ remote func pre_start_game(spawn_points):
 	var world = load("res://levels/multiplayer_map.tscn").instance()
 	get_tree().get_root().add_child(world)
 
-	get_tree().get_root().get_node("lobby").hide()
+	get_tree().get_root().get_node("Lobby").hide()
 
 	var player_scene = load("res://characters/player/player.tscn")
 
