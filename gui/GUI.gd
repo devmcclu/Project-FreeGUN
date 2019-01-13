@@ -6,11 +6,6 @@ extends MarginContainer
 
 var parent
 
-func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	pass
-
 func _process(delta):
 	if $"../../../../".has_node("Timer"):
 		$"VBoxContainer/HBoxContainer2/Timer/Counter/Panel/Amount".text = str($"../../../../Timer".time_left)

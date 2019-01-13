@@ -19,11 +19,6 @@ var gun_stats = [0, 500, 34]
 #array to store gun ammunition ammount
 var gun_ammo = [1, 0, 0]
 
-func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	pass
-
 func health_check():
 	emit_signal("health_changed")
 	if self.health <= 0:
