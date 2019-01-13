@@ -31,7 +31,7 @@ func shoot():
 		var new_bullet = load("res://bullet/bullet.tscn").instance()
 		$"../".add_child(new_bullet)
 		#Bullet position and rotation is set to the spawn point and rotation on the player
-		new_bullet.position = $"bullet_spawn".global_position
+		new_bullet.position = $"BulletSpawn".global_position
 		new_bullet.rotation = self.rotation
 		#Velocity of the bullet is set to the speed of the weapon's bullets
 		new_bullet.linear_velocity = Vector2(cos(self.rotation)*gun_stats[1], sin(self.rotation)*gun_stats[1])
