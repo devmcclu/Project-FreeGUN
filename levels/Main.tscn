@@ -9,9 +9,6 @@
 [ext_resource path="res://graphics/gun_2.png" type="Texture" id=7]
 [ext_resource path="res://graphics/wall.png" type="Texture" id=8]
 
-
-
-
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
@@ -54,14 +51,17 @@ editor/display_folded = true
 [node name="enemy" parent="enimies" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( 805.116, 325.649 )
+speed = 200
 
 [node name="enemy2" parent="enimies" index="1" instance=ExtResource( 4 )]
 
 position = Vector2( 776.005, 159.475 )
+speed = 200
 
 [node name="enemy3" parent="enimies" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 807.765, 489.741 )
+speed = 200
 
 [node name="gun_1" type="Area2D" parent="." index="3"]
 
