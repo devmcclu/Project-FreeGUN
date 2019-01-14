@@ -16,67 +16,67 @@ func _ready():
 
 func _on_host_pressed():
 	#Don't host if no name is entered
-	if get_node("connect/name").text == "":
-		get_node("connect/error_label").text="Invalid name!"
+	if get_node("Connect/Name").text == "":
+		get_node("Connect/ErrorLabel").text="Invalid name!"
 		return
 
-	get_node("connect").hide()
-	get_node("players").show()
-	get_node("connect/error_label").text=""
+	get_node("Connect").hide()
+	get_node("Players").show()
+	get_node("Connect/ErrorLabel").text=""
 
-	var player_name = get_node("connect/name").text
+	var player_name = get_node("Connect/Name").text
 	gamestate.host_game(player_name)
 	refresh_lobby()
 
 
 func _on_join_pressed():
 	#Don't join if no name is entered
-	if get_node("connect/name").text == "":
-		get_node("connect/error_label").text="Invalid name!"
+	if get_node("Connect/Name").text == "":
+		get_node("Connect/ErrorLabel").text="Invalid name!"
 		return
 
-	var ip = get_node("connect/ip").text
+	var ip = get_node("Connect/IP").text
 	if not ip.is_valid_ip_address():
-		get_node("connect/error_label").text="Invalid IPv4 address!"
+		get_node("Connect/ErrorLabel").text="Invalid IPv4 address!"
 		return
 
-	get_node("connect/error_label").text=""
-	get_node("connect/host").disabled=true
-	get_node("connect/join").disabled=true
+	get_node("Connect/ErrorLabel").text=""
+	get_node("Connect/Host").disabled=true
+	get_node("Connect/Join").disabled=true
 
-	var player_name = get_node("connect/name").text
+	var player_name = get_node("Connect/Name").text
 	gamestate.join_game(ip, player_name)
 	# refresh_lobby() gets called by the player_list_changed signal
 
 func _on_connection_success():
-	get_node("connect").hide()
-	get_node("players").show()
+	get_node("Connect").hide()
+	get_node("Players").show()
 
 func _on_connection_failed():
-	get_node("connect/host").disabled=false
-	get_node("connect/join").disabled=false
-	get_node("connect/error_label").set_text("Connection failed.")
+	get_node("Connect/Host").disabled=false
+	get_node("Connect/Join").disabled=false
+	get_node("Connect/ErrorLabel").set_text("Connection failed.")
 
 func _on_game_ended():
 	show()
-	get_node("connect").show()
-	get_node("players").hide()
-	get_node("connect/host").disabled=false
-	get_node("connect/join").disabled
+	get_node("Connect").show()
+	get_node("Players").hide()
+	get_node("Connect/Host").disabled=false
+	get_node("Connect/Join").disabled
 
 func _on_game_error(errtxt):
-	get_node("error").dialog_text = errtxt
-	get_node("error").popup_centered_minsize()
+	get_node("Error").dialog_text = errtxt
+	get_node("Error").popup_centered_minsize()
 
 func refresh_lobby():
 	var players = gamestate.get_player_list()
 	players.sort()
-	get_node("players/list").clear()
-	get_node("players/list").add_item(gamestate.get_player_name() + " (You)")
+	get_node("Players/List").clear()
+	get_node("Players/List").add_item(gamestate.get_player_name() + " (You)")
 	for p in players:
-		get_node("players/list").add_item(p)
+		get_node("Players/List").add_item(p)
 
-	get_node("players/start").disabled=not get_tree().is_network_server()
+	get_node("Players/Start").disabled=not get_tree().is_network_server()
 
 func _on_start_pressed():
 	gamestate.begin_game()

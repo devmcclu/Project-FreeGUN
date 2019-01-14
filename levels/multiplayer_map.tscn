@@ -27,29 +27,30 @@ extents = Vector2( 32.3673, 412.779 )
 custom_solver_bias = 0.0
 extents = Vector2( 779.543, 31.7486 )
 
-[node name="Main" type="Node" index="0"]
+[node name="Main" type="Node"]
 
 script = ExtResource( 1 )
 
-[node name="background" type="Sprite" parent="." index="0"]
+[node name="Background" type="Sprite" parent="." index="0"]
 
 position = Vector2( 556.423, 292.832 )
 scale = Vector2( 24.7798, 8.27475 )
 texture = ExtResource( 2 )
 
-[node name="spawn_points" type="Node2D" parent="." index="1"]
+[node name="SpawnPoints" type="Node2D" parent="." index="1"]
 
-[node name="0" type="Position2D" parent="spawn_points" index="0"]
+editor/display_folded = true
+
+[node name="0" type="Position2D" parent="SpawnPoints" index="0"]
 
 position = Vector2( -150, 90 )
 
-[node name="1" type="Position2D" parent="spawn_points" index="1"]
+[node name="1" type="Position2D" parent="SpawnPoints" index="1"]
 
 position = Vector2( 120, 90 )
 
-[node name="gun_1" type="Area2D" parent="." index="2"]
+[node name="Gun1" type="Area2D" parent="." index="2"]
 
-editor/display_folded = true
 position = Vector2( 543.817, 293.954 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -69,20 +70,19 @@ damage = 100
 gun_number = 1
 gun_ammo_count = 5
 
-[node name="gun_1_sprite" type="Sprite" parent="gun_1" index="0"]
+[node name="Gun1Sprite" type="Sprite" parent="Gun1" index="0"]
 
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="gun_1" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gun1" index="1"]
 
 scale = Vector2( 1, 3.1726 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="gun_2" type="Area2D" parent="." index="3"]
+[node name="Gun2" type="Area2D" parent="." index="3"]
 
-editor/display_folded = true
 position = Vector2( 314.156, 439.543 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -102,177 +102,129 @@ damage = 17
 gun_number = 2
 gun_ammo_count = 50
 
-[node name="gun_2" type="Sprite" parent="gun_2" index="0"]
+[node name="Gun2Sprite" type="Sprite" parent="Gun2" index="0"]
 
 texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="gun_collsion" type="CollisionShape2D" parent="gun_2" index="1"]
+[node name="GunCollsion" type="CollisionShape2D" parent="Gun2" index="1"]
 
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="walls" type="Node" parent="." index="4"]
+[node name="Walls" type="Node" parent="." index="4"]
 
 editor/display_folded = true
 
-[node name="wall" type="RigidBody2D" parent="walls" index="0" groups=[
+[node name="Wall" type="StaticBody2D" parent="Walls" index="0" groups=[
 "not_player",
 ]]
 
-editor/display_folded = true
 position = Vector2( -271.321, 281.872 )
 input_pickable = false
 collision_layer = 2
 collision_mask = 5
-mode = 1
-mass = 1.0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
 _sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="wall_sprite" type="Sprite" parent="walls/wall" index="0"]
+[node name="WallSprite" type="Sprite" parent="Walls/Wall" index="0"]
 
 scale = Vector2( 1, 13 )
 texture = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="wall_collision" type="CollisionShape2D" parent="walls/wall" index="1"]
+[node name="WallCollision" type="CollisionShape2D" parent="Walls/Wall" index="1"]
 
 shape = SubResource( 3 )
 
-[node name="wall2" type="RigidBody2D" parent="walls" index="1" groups=[
+[node name="Wall2" type="StaticBody2D" parent="Walls" index="1" groups=[
 "not_player",
 ]]
 
-editor/display_folded = true
 position = Vector2( 1353.52, 281.872 )
 input_pickable = false
 collision_layer = 2
 collision_mask = 5
-mode = 1
-mass = 1.0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
 _sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="wall_sprite" type="Sprite" parent="walls/wall2" index="0"]
+[node name="WallSprite" type="Sprite" parent="Walls/Wall2" index="0"]
 
 scale = Vector2( 1, 13 )
 texture = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="wall_collision" type="CollisionShape2D" parent="walls/wall2" index="1"]
+[node name="WallCollision" type="CollisionShape2D" parent="Walls/Wall2" index="1"]
 
 shape = SubResource( 3 )
 
-[node name="wall3" type="RigidBody2D" parent="walls" index="2" groups=[
+[node name="Wall3" type="StaticBody2D" parent="Walls" index="2" groups=[
 "not_player",
 ]]
 
-editor/display_folded = true
 position = Vector2( 541.573, 587.269 )
 input_pickable = false
 collision_layer = 2
 collision_mask = 5
-mode = 1
-mass = 1.0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
 _sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="wall_collsion" type="CollisionShape2D" parent="walls/wall3" index="0"]
+[node name="WallCollsion" type="CollisionShape2D" parent="Walls/Wall3" index="0"]
 
 shape = SubResource( 4 )
 
-[node name="wall_sprite" type="Sprite" parent="walls/wall3" index="1"]
+[node name="WallSprite" type="Sprite" parent="Walls/Wall3" index="1"]
 
 scale = Vector2( 24.4, 1 )
 texture = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="wall4" type="RigidBody2D" parent="walls" index="3" groups=[
+[node name="Wall4" type="StaticBody2D" parent="Walls" index="3" groups=[
 "not_player",
 ]]
 
-editor/display_folded = true
 position = Vector2( 541.299, 1.92056 )
 input_pickable = false
 collision_layer = 2
 collision_mask = 5
-mode = 1
-mass = 1.0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
 _sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="wall_collision" type="CollisionShape2D" parent="walls/wall4" index="0"]
+[node name="WallCollision" type="CollisionShape2D" parent="Walls/Wall4" index="0"]
 
 shape = SubResource( 4 )
 
-[node name="wall_sprite" type="Sprite" parent="walls/wall4" index="1"]
+[node name="WallSprite" type="Sprite" parent="Walls/Wall4" index="1"]
 
 scale = Vector2( 24.4, 1 )
 texture = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="players" type="Node2D" parent="." index="5"]
+[node name="Players" type="Node2D" parent="." index="5"]
 
 [node name="Timer" type="Timer" parent="." index="6"]
 

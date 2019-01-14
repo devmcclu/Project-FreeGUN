@@ -6,7 +6,6 @@
 [ext_resource path="res://Iso_Dark/iso_dark.theme" type="Theme" id=4]
 [ext_resource path="res://gui/GUI.tscn" type="PackedScene" id=5]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
@@ -17,7 +16,7 @@ extents = Vector2( 29.3281, 28.8452 )
 custom_solver_bias = 0.0
 extents = Vector2( 32.1106, 32.283 )
 
-[node name="player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -27,17 +26,17 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform", "collision" ]
 speed = 200
 
-[node name="player_collision" type="CollisionShape2D" parent="." index="0"]
+[node name="PlayerCollision" type="CollisionShape2D" parent="." index="0"]
 
 shape = SubResource( 1 )
 
-[node name="player_sprite" type="Sprite" parent="." index="1"]
+[node name="PlayerSprite" type="Sprite" parent="." index="1"]
 
 rotation = 1.5708
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="bullet_spawn" type="Sprite" parent="." index="2"]
+[node name="BulletSpawn" type="Sprite" parent="." index="2"]
 
 visible = false
 position = Vector2( 48, 0 )
@@ -94,7 +93,7 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="label" type="Label" parent="CanvasLayer" index="0"]
+[node name="Label" type="Label" parent="CanvasLayer" index="0"]
 
 visible = false
 anchor_left = 0.0
