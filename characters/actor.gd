@@ -44,8 +44,3 @@ func shoot():
 			emit_signal("ammo_changed")
 			print("one less")
 		print(new_bullet.parent)
-
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
