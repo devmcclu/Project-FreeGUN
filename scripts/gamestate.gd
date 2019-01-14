@@ -85,7 +85,7 @@ remote func pre_start_game(spawn_points):
 	var player_scene = load("res://characters/player/player.tscn")
 
 	for p_id in spawn_points:
-		var spawn_pos = world.get_node("spawn_points/" + str(spawn_points[p_id])).position
+		var spawn_pos = world.get_node("SpawnPoints/" + str(spawn_points[p_id])).position
 		var player = player_scene.instance()
 		
 		player.set_name(str(p_id)) # Use unique ID as node name
@@ -99,7 +99,7 @@ remote func pre_start_game(spawn_points):
 			# Otherwise set name from peer
 			player.set_player_name(players[p_id])
 
-		world.get_node("players").add_child(player)
+		world.get_node("Players").add_child(player)
 	
 	if not get_tree().is_network_server():
 		# Tell server we are ready to start
