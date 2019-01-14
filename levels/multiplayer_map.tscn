@@ -27,7 +27,7 @@ extents = Vector2( 32.3673, 412.779 )
 custom_solver_bias = 0.0
 extents = Vector2( 779.543, 31.7486 )
 
-[node name="Main" type="Node" index="0"]
+[node name="Main" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -116,7 +116,7 @@ _sections_unfolded = [ "Transform" ]
 
 editor/display_folded = true
 
-[node name="Wall" type="RigidBody2D" parent="Walls" index="0" groups=[
+[node name="Wall" type="StaticBody2D" parent="Walls" index="0" groups=[
 "not_player",
 ]]
 
@@ -124,21 +124,10 @@ position = Vector2( -271.321, 281.872 )
 input_pickable = false
 collision_layer = 2
 collision_mask = 5
-mode = 1
-mass = 1.0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
 _sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_edit_group_": true
@@ -154,7 +143,7 @@ _sections_unfolded = [ "Transform" ]
 
 shape = SubResource( 3 )
 
-[node name="Wall2" type="RigidBody2D" parent="Walls" index="1" groups=[
+[node name="Wall2" type="StaticBody2D" parent="Walls" index="1" groups=[
 "not_player",
 ]]
 
@@ -162,21 +151,10 @@ position = Vector2( 1353.52, 281.872 )
 input_pickable = false
 collision_layer = 2
 collision_mask = 5
-mode = 1
-mass = 1.0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
 _sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_edit_group_": true
@@ -192,7 +170,7 @@ _sections_unfolded = [ "Transform" ]
 
 shape = SubResource( 3 )
 
-[node name="Wall3" type="RigidBody2D" parent="Walls" index="2" groups=[
+[node name="Wall3" type="StaticBody2D" parent="Walls" index="2" groups=[
 "not_player",
 ]]
 
@@ -200,21 +178,10 @@ position = Vector2( 541.573, 587.269 )
 input_pickable = false
 collision_layer = 2
 collision_mask = 5
-mode = 1
-mass = 1.0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
 _sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_edit_group_": true
@@ -230,7 +197,7 @@ scale = Vector2( 24.4, 1 )
 texture = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Wall4" type="RigidBody2D" parent="Walls" index="3" groups=[
+[node name="Wall4" type="StaticBody2D" parent="Walls" index="3" groups=[
 "not_player",
 ]]
 
@@ -238,21 +205,10 @@ position = Vector2( 541.299, 1.92056 )
 input_pickable = false
 collision_layer = 2
 collision_mask = 5
-mode = 1
-mass = 1.0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
 _sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_edit_group_": true
