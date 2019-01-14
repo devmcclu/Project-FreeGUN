@@ -1,4 +1,4 @@
-extends "res://characters/actor.gd"
+extends "res://characters/character.gd"
 
 func _ready():
 	# Called every time the node is added to the scene.
