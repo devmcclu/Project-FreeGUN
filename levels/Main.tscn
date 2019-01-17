@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://graphics/background.png" type="Texture" id=1]
 [ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://graphics/gun_1.png" type="Texture" id=6]
 [ext_resource path="res://graphics/gun_2.png" type="Texture" id=7]
 [ext_resource path="res://graphics/wall.png" type="Texture" id=8]
+[ext_resource path="res://pause_menu/PauseMenu.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -127,6 +128,8 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Walls" type="Node" parent="." index="5"]
 
+editor/display_folded = true
+
 [node name="Wall" type="StaticBody2D" parent="Walls" index="0" groups=[
 "not_player",
 ]]
@@ -234,5 +237,17 @@ shape = SubResource( 4 )
 scale = Vector2( 24.4, 1 )
 texture = ExtResource( 8 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="6"]
+
+layer = 2
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="PauseMenu" parent="CanvasLayer" index="0" instance=ExtResource( 9 )]
+
+visible = false
 
 
