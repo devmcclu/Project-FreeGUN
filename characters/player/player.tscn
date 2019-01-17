@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://characters/player/player_multiplayer.gd" type="Script" id=1]
 [ext_resource path="res://graphics/Player.png" type="Texture" id=2]
 [ext_resource path="res://graphics/bullet.png" type="Texture" id=3]
-[ext_resource path="res://Iso_Dark/iso_dark.theme" type="Theme" id=4]
-[ext_resource path="res://gui/GUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gui/GUI.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -110,16 +109,15 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-theme = ExtResource( 4 )
 text = "Name"
 align = 1
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect", "custom_constants" ]
+_sections_unfolded = [ "Rect", "Theme", "custom_constants" ]
 
-[node name="GUI" parent="CanvasLayer" index="1" instance=ExtResource( 5 )]
+[node name="GUI" parent="CanvasLayer" index="1" instance=ExtResource( 4 )]
 
 visible = false
 
