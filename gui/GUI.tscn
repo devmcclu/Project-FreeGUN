@@ -1,13 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Iso_Dark/iso_dark.theme" type="Theme" id=1]
+[ext_resource path="res://gui/GUI.gd" type="Script" id=1]
 [ext_resource path="res://gui/Timer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gui/KillCounter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://gui/HealthCounter.tscn" type="PackedScene" id=4]
-[ext_resource path="res://gui/AmmoCounter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gui/GunName.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gui/AmmoCounter.tscn" type="PackedScene" id=6]
 
-
-[node name="GUI" type="MarginContainer"]
+[node name="GUI" type="MarginContainer" index="0"]
 
 anchor_left = 0.5
 anchor_top = 1.0
@@ -23,11 +23,11 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = ExtResource( 1 )
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
 custom_constants/margin_bottom = 20
+script = ExtResource( 1 )
 _sections_unfolded = [ "Focus", "Hint", "Mouse", "Rect", "Size Flags", "Theme", "custom_constants" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." index="0"]
@@ -55,7 +55,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1240.0
-margin_bottom = 70.0
+margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -68,10 +68,14 @@ _sections_unfolded = [ "Anchor", "Margin", "Rect", "Size Flags" ]
 [node name="Timer" parent="VBoxContainer/HBoxContainer2" index="0" instance=ExtResource( 2 )]
 
 margin_left = 0.0
-margin_right = 1106.0
+margin_right = 1128.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 
 [node name="KillCounter" parent="VBoxContainer/HBoxContainer2" index="1" instance=ExtResource( 3 )]
+
+margin_left = 1132.0
+margin_bottom = 40.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" index="1"]
 
@@ -79,26 +83,36 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 614.0
+margin_top = 644.0
 margin_right = 1240.0
 margin_bottom = 684.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
+size_flags_horizontal = 3
 size_flags_vertical = 1
 alignment = 0
-_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect" ]
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags" ]
 
 [node name="HealthCounter" parent="VBoxContainer/HBoxContainer" index="0" instance=ExtResource( 4 )]
 
 margin_left = 0.0
-margin_right = 1106.0
+margin_right = 562.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 
-[node name="AmmoCounter" parent="VBoxContainer/HBoxContainer" index="1" instance=ExtResource( 5 )]
+[node name="GunName" parent="VBoxContainer/HBoxContainer" index="1" instance=ExtResource( 5 )]
+
+margin_left = 566.0
+margin_right = 1128.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+
+[node name="AmmoCounter" parent="VBoxContainer/HBoxContainer" index="2" instance=ExtResource( 6 )]
 
 editor/display_folded = true
+margin_left = 1132.0
+margin_bottom = 40.0
 
 
