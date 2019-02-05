@@ -15,7 +15,7 @@ extents = Vector2( 29.3281, 28.8452 )
 custom_solver_bias = 0.0
 extents = Vector2( 32.1106, 32.283 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -120,8 +120,6 @@ _sections_unfolded = [ "Rect", "Theme", "custom_constants" ]
 [node name="GUI" parent="CanvasLayer" index="1" instance=ExtResource( 4 )]
 
 visible = false
-
-[connection signal="ammo_changed" from="." to="CanvasLayer/GUI" method="_on_player_ammo_changed"]
 
 [connection signal="ammo_changed" from="." to="CanvasLayer/GUI/VBoxContainer/HBoxContainer/AmmoCounter" method="_on_Player_ammo_changed"]
 
