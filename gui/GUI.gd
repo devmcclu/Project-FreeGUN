@@ -17,10 +17,10 @@ func _on_player_gun_changed():
 	$"VBoxContainer/HBoxContainer/GunName/Counter/Panel/Amount".text = str($"../../".gun_stats[0])
 
 
-func _on_player_ammo_changed():
-	#When the ammo changes, either when the weapon is changed or bullet shot, update ammo count
-	print("you changed bro")
-	$"VBoxContainer/HBoxContainer/AmmoCounter/Counter/Panel/Amount".text = str($"../../".gun_ammo[$"../../".gun_stats[0]])
+#func _on_player_ammo_changed():
+#	#When the ammo changes, either when the weapon is changed or bullet shot, update ammo count
+#	print("you changed bro")
+#	$"VBoxContainer/HBoxContainer/AmmoCounter/Counter/Panel/Amount".text = str($"../../".gun_ammo[$"../../".gun_stats[0]])
 
 
 func _on_player_health_changed():
