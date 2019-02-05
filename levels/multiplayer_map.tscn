@@ -27,7 +27,7 @@ extents = Vector2( 32.3673, 412.779 )
 custom_solver_bias = 0.0
 extents = Vector2( 779.543, 31.7486 )
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -51,6 +51,7 @@ position = Vector2( 120, 90 )
 
 [node name="Gun1" type="Area2D" parent="." index="2"]
 
+editor/display_folded = true
 position = Vector2( 543.817, 293.954 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -83,6 +84,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Gun2" type="Area2D" parent="." index="3"]
 
+editor/display_folded = true
 position = Vector2( 314.156, 439.543 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -226,7 +228,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Players" type="Node2D" parent="." index="5"]
 
-[node name="Timer" type="Timer" parent="." index="6"]
+[node name="LevelTimer" type="Timer" parent="." index="6"]
 
 process_mode = 1
 wait_time = 60.0
