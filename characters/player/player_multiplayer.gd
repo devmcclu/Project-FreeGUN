@@ -1,23 +1,23 @@
-#extends KinematicBody2D
-extends "res://characters/player/player.gd"
+extends KinematicBody2D
+
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
 
-#signal gun_changed
-#signal ammo_changed
-#signal health_changed
+signal gun_changed
+signal ammo_changed
+signal health_changed
 
-##Base player variables and stats
-#export (int) var speed = 200
-#var velocity = Vector2()
-#var health = 100
-##Array to check if player has a gun
-#var has_guns = [true, false, false]
-##Array to store current gun stats (gun number(gun_stats[0]), bullet speed(gun_stats[1]), damage(gun_stats[2]))
-#var gun_stats = [0, 500, 34]
-##array to store gun ammunition ammount
-#var gun_ammo = [1, 0, 0]
+#Base player variables and stats
+export (int) var speed = 200
+var velocity = Vector2()
+var health = 100
+#Array to check if player has a gun
+var has_guns = [true, false, false]
+#Array to store current gun stats (gun number(gun_stats[0]), bullet speed(gun_stats[1]), damage(gun_stats[2]))
+var gun_stats = [0, 500, 34]
+#array to store gun ammunition ammount
+var gun_ammo = [1, 0, 0]
 
 slave var slave_pos = Vector2()
 slave var slave_velocity = Vector2()
@@ -46,44 +46,44 @@ func health_check():
 func _process(delta):
 	#Player fire variable
 	var fire_gun = Input.is_action_just_pressed("fire_gun")
-#
-#	#PLayer switch weapon variables
-#	var weapon_up = Input.is_action_pressed("weapon_up")
-#	var weapon_down = Input.is_action_pressed("weapon_down")
-#	var switch_weapon_1 = Input.is_action_just_pressed("switch_weapon_1")
-#	var switch_weapon_2 = Input.is_action_just_pressed("switch_weapon_2")
-#	var switch_weapon_3 = Input.is_action_just_pressed("switch_weapon_3")
+	
+	#PLayer switch weapon variables
+	var weapon_up = Input.is_action_pressed("weapon_up")
+	var weapon_down = Input.is_action_pressed("weapon_down")
+	var switch_weapon_1 = Input.is_action_just_pressed("switch_weapon_1")
+	var switch_weapon_2 = Input.is_action_just_pressed("switch_weapon_2")
+	var switch_weapon_3 = Input.is_action_just_pressed("switch_weapon_3")
 	
 	#Player Fires Weapon if player has enough ammo
 	if is_network_master():
 		if fire_gun:
 			rpc('shoot')
 	
-#	#Switch weapons with scroll wheel
-#	if weapon_up:
-#		print("up a weapon")
-#	if weapon_down:
-#		print("down a weapon")
-#
-#	#Switch player weapon when switch weapon key is pressed
-#	if switch_weapon_1:
-#		if has_guns[0] == true:
-#			self.gun_stats = [0, 500, 34]
-#			#Send signal to GUI about gun change
-#			emit_signal("gun_changed")
-#			emit_signal("ammo_changed")
-#	if switch_weapon_2:
-#		if has_guns[1] == true:
-#			gun_stats = [1, 100, 100]
-#			#Send signal to GUI about gun change
-#			emit_signal("gun_changed")
-#			emit_signal("ammo_changed")
-#	if switch_weapon_3:
-#		if has_guns[2] == true:
-#			gun_stats = [2, 1000, 50]
-#			#Send signal to GUI about gun change
-#			emit_signal("gun_changed")
-#			emit_signal("ammo_changed")
+	#Switch weapons with scroll wheel
+	if weapon_up:
+		print("up a weapon")
+	if weapon_down:
+		print("down a weapon")
+	
+	#Switch player weapon when switch weapon key is pressed
+	if switch_weapon_1:
+		if has_guns[0] == true:
+			self.gun_stats = [0, 500, 34]
+			#Send signal to GUI about gun change
+			emit_signal("gun_changed")
+			emit_signal("ammo_changed")
+	if switch_weapon_2:
+		if has_guns[1] == true:
+			gun_stats = [1, 100, 100]
+			#Send signal to GUI about gun change
+			emit_signal("gun_changed")
+			emit_signal("ammo_changed")
+	if switch_weapon_3:
+		if has_guns[2] == true:
+			gun_stats = [2, 1000, 50]
+			#Send signal to GUI about gun change
+			emit_signal("gun_changed")
+			emit_signal("ammo_changed")
 
 func get_input():
 	#Create controlable Vector2 for player movement input
@@ -129,8 +129,8 @@ sync func shoot():
 		print(new_bullet.parent)
 
 func _physics_process(delta):
-#	get_input()
-#	move_and_slide(velocity)
+	get_input()
+	move_and_slide(velocity)
 	#Player looks at mouse
 	if is_network_master():
 		self.look_at(get_global_mouse_position())
@@ -140,17 +140,17 @@ func _physics_process(delta):
 		self.rotation = slave_rotation
 		slave_pos = position # To avoid jitter
 
-##On gun pickup, change gun variables
-#func _on_Area2D_area_entered(area):
-#	#Player's gun stats are changed to reflect the gun
-#	self.gun_stats = [area.gun_number, area.bullet_speed, area.damage]
-#	#Player has the gun
-#	self.has_guns[area.gun_number] = true
-#	#Player aquires base ammo for the gun
-#	self.gun_ammo[area.gun_number] = area.gun_ammo_count
-#	emit_signal("gun_changed")
-#	emit_signal("ammo_changed")
-#	area.queue_free()
+#On gun pickup, change gun variables
+func _on_Area2D_area_entered(area):
+	#Player's gun stats are changed to reflect the gun
+	self.gun_stats = [area.gun_number, area.bullet_speed, area.damage]
+	#Player has the gun
+	self.has_guns[area.gun_number] = true
+	#Player aquires base ammo for the gun
+	self.gun_ammo[area.gun_number] = area.gun_ammo_count
+	emit_signal("gun_changed")
+	emit_signal("ammo_changed")
+	area.queue_free()
 
 func set_player_name(new_name):
 	get_node("CanvasLayer/Label").set_text(new_name)
