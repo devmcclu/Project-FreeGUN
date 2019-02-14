@@ -11,10 +11,10 @@ func _process(delta):
 #		$"VBoxContainer/HBoxContainer2/Timer/Counter/Panel/Amount".text = str($"../../../../LevelTimer".time_left)
 	pass
 
-func _on_player_gun_changed():
-	#When the player changes guns, the GunName counter reflects what gun the player has
-	print("you changed bro")
-	$"VBoxContainer/HBoxContainer/GunName/Counter/Panel/Amount".text = str($"../../".gun_stats[0])
+#func _on_player_gun_changed():
+#	#When the player changes guns, the GunName counter reflects what gun the player has
+#	print("you changed bro")
+#	$"VBoxContainer/HBoxContainer/GunName/Counter/Panel/Amount".text = str($"../../".gun_stats[0])
 
 
 #func _on_player_ammo_changed():

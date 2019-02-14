@@ -123,7 +123,7 @@ visible = false
 
 [connection signal="ammo_changed" from="." to="CanvasLayer/GUI/VBoxContainer/HBoxContainer/AmmoCounter" method="_on_Player_ammo_changed"]
 
-[connection signal="gun_changed" from="." to="CanvasLayer/GUI" method="_on_player_gun_changed"]
+[connection signal="gun_changed" from="." to="CanvasLayer/GUI/VBoxContainer/HBoxContainer/GunName" method="_on_Player_gun_changed"]
 
 [connection signal="health_changed" from="." to="CanvasLayer/GUI/VBoxContainer/HBoxContainer/HealthCounter" method="_on_Player_health_changed"]
 
