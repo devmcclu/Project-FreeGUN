@@ -125,7 +125,7 @@ visible = false
 
 [connection signal="gun_changed" from="." to="CanvasLayer/GUI" method="_on_player_gun_changed"]
 
-[connection signal="health_changed" from="." to="CanvasLayer/GUI" method="_on_player_health_changed"]
+[connection signal="health_changed" from="." to="CanvasLayer/GUI/VBoxContainer/HBoxContainer/HealthCounter" method="_on_Player_health_changed"]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 

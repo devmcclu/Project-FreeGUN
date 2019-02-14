@@ -23,6 +23,6 @@ func _on_player_gun_changed():
 #	$"VBoxContainer/HBoxContainer/AmmoCounter/Counter/Panel/Amount".text = str($"../../".gun_ammo[$"../../".gun_stats[0]])
 
 
-func _on_player_health_changed():
-	print("dying")
-	$"VBoxContainer/HBoxContainer/HealthCounter/Counter/Panel/Amount".text = str($"../../".health)
+#func _on_player_health_changed():
+#	print("dying")
+#	$"VBoxContainer/HBoxContainer/HealthCounter/Counter/Panel/Amount".text = str($"../../".health)
