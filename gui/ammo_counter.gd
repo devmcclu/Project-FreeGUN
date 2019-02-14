@@ -6,11 +6,6 @@ extends HBoxContainer
 
 onready var player = $"../../../../../"
 
-func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	pass
-
 func _on_Player_ammo_changed():
 	#When the ammo changes, either when the weapon is changed or bullet shot, update ammo count
 	print("you changed bro")
