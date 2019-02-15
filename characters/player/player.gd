@@ -1,33 +1,43 @@
 extends "res://characters/character.gd"
 
+#var fire_gun = Input.is_action_just_pressed("fire_gun")
+
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
+#	emit_signal("gun_changed")
+#	emit_signal("health_changed")
+#	$"Camera2D".make_current()
+#	$"CanvasLayer/GUI".visible = true
+	make_gui()
+
+func make_gui():
 	emit_signal("gun_changed")
 	emit_signal("health_changed")
 	$"Camera2D".make_current()
 	$"CanvasLayer/GUI".visible = true
+	#fire_gun = Input.is_action_just_pressed("fire_gun")
 
 func _process(delta):
 	#Player fire variable
-	var fire_gun = Input.is_action_just_pressed("fire_gun")
-	
+	#var fire_gun = Input.is_action_just_pressed("fire_gun")
+	check_shoot()
 	#PLayer switch weapon variables
-	var weapon_up = Input.is_action_pressed("weapon_up")
-	var weapon_down = Input.is_action_pressed("weapon_down")
+#	var weapon_up = Input.is_action_pressed("weapon_up")
+#	var weapon_down = Input.is_action_pressed("weapon_down")
 	var switch_weapon_1 = Input.is_action_just_pressed("switch_weapon_1")
 	var switch_weapon_2 = Input.is_action_just_pressed("switch_weapon_2")
 	var switch_weapon_3 = Input.is_action_just_pressed("switch_weapon_3")
 	
 	#Player Fires Weapon if player has enough ammo
-	if fire_gun:
-		shoot()
+#	if fire_gun:
+#		shoot()
 	
 	#Switch weapons with scroll wheel
-	if weapon_up:
-		print("up a weapon")
-	if weapon_down:
-		print("down a weapon")
+#	if weapon_up:
+#		print("up a weapon")
+#	if weapon_down:
+#		print("down a weapon")
 	
 	#Switch player weapon when switch weapon key is pressed
 	if switch_weapon_1:
@@ -63,12 +73,17 @@ func get_input():
 		velocity.y -= 1
 	#Normalize player movement input to make sure speed is constant
 	velocity = velocity.normalized() * speed
-
-func _physics_process(delta):
-	get_input()
 	move_and_slide(velocity)
 	#Player looks at mouse
 	self.look_at(get_global_mouse_position())
+
+func _physics_process(delta):
+	get_input()
+	
+
+func check_shoot():
+	if Input.is_action_just_pressed("fire_gun"):
+		self.shoot()
 
 #On gun pickup, change gun variables
 func _on_Area2D_area_entered(area):
