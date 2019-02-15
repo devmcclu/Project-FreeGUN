@@ -1,14 +1,6 @@
 extends "res://characters/character.gd"
 
-#var fire_gun = Input.is_action_just_pressed("fire_gun")
-
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-#	emit_signal("gun_changed")
-#	emit_signal("health_changed")
-#	$"Camera2D".make_current()
-#	$"CanvasLayer/GUI".visible = true
 	make_gui()
 
 func make_gui():
@@ -20,7 +12,6 @@ func make_gui():
 
 func _process(delta):
 	#Player fire variable
-	#var fire_gun = Input.is_action_just_pressed("fire_gun")
 	check_shoot()
 	#PLayer switch weapon variables
 #	var weapon_up = Input.is_action_pressed("weapon_up")
@@ -28,10 +19,6 @@ func _process(delta):
 	var switch_weapon_1 = Input.is_action_just_pressed("switch_weapon_1")
 	var switch_weapon_2 = Input.is_action_just_pressed("switch_weapon_2")
 	var switch_weapon_3 = Input.is_action_just_pressed("switch_weapon_3")
-	
-	#Player Fires Weapon if player has enough ammo
-#	if fire_gun:
-#		shoot()
 	
 	#Switch weapons with scroll wheel
 #	if weapon_up:
@@ -79,7 +66,6 @@ func get_input():
 
 func _physics_process(delta):
 	get_input()
-	
 
 func check_shoot():
 	if Input.is_action_just_pressed("fire_gun"):
