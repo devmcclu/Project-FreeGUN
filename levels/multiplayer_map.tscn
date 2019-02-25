@@ -1,28 +1,17 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://levels/deathmatch.gd" type="Script" id=1]
 [ext_resource path="res://graphics/background.png" type="Texture" id=2]
-[ext_resource path="res://scripts/gun_variables.gd" type="Script" id=3]
-[ext_resource path="res://graphics/gun_1.png" type="Texture" id=4]
-[ext_resource path="res://graphics/gun_2.png" type="Texture" id=5]
-[ext_resource path="res://graphics/wall.png" type="Texture" id=6]
+[ext_resource path="res://items/gun1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://items/gun2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://graphics/wall.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32.129, 10.156 )
-
-[sub_resource type="RectangleShape2D" id=2]
-
-custom_solver_bias = 0.0
-extents = Vector2( 32.1642, 32.305 )
-
-[sub_resource type="RectangleShape2D" id=3]
-
-custom_solver_bias = 0.0
 extents = Vector2( 32.3673, 412.779 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 779.543, 31.7486 )
@@ -49,72 +38,17 @@ position = Vector2( -150, 90 )
 
 position = Vector2( 120, 90 )
 
-[node name="Gun1" type="Area2D" parent="." index="2"]
+[node name="Guns" type="Node" parent="." index="2"]
 
-editor/display_folded = true
-position = Vector2( 543.817, 293.954 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 8
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 3 )
-_sections_unfolded = [ "Collision" ]
-__meta__ = {
-"_edit_group_": true
-}
-bullet_speed = 100
-damage = 100
-gun_number = 1
-gun_ammo_count = 5
+[node name="Gun" parent="Guns" index="0" instance=ExtResource( 3 )]
 
-[node name="Gun1Sprite" type="Sprite" parent="Gun1" index="0"]
+position = Vector2( 550, 250 )
 
-texture = ExtResource( 4 )
-_sections_unfolded = [ "Transform" ]
+[node name="Gun2" parent="Guns" index="1" instance=ExtResource( 4 )]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gun1" index="1"]
+position = Vector2( 200, 400 )
 
-scale = Vector2( 1, 3.1726 )
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Gun2" type="Area2D" parent="." index="3"]
-
-editor/display_folded = true
-position = Vector2( 314.156, 439.543 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 8
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 3 )
-_sections_unfolded = [ "Collision", "Transform" ]
-__meta__ = {
-"_edit_group_": true
-}
-bullet_speed = 1000
-damage = 17
-gun_number = 2
-gun_ammo_count = 50
-
-[node name="Gun2Sprite" type="Sprite" parent="Gun2" index="0"]
-
-texture = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="GunCollsion" type="CollisionShape2D" parent="Gun2" index="1"]
-
-shape = SubResource( 2 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Walls" type="Node" parent="." index="4"]
+[node name="Walls" type="Node" parent="." index="3"]
 
 editor/display_folded = true
 
@@ -138,12 +72,12 @@ __meta__ = {
 [node name="WallSprite" type="Sprite" parent="Walls/Wall" index="0"]
 
 scale = Vector2( 1, 13 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="WallCollision" type="CollisionShape2D" parent="Walls/Wall" index="1"]
 
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Wall2" type="StaticBody2D" parent="Walls" index="1" groups=[
 "not_player",
@@ -165,12 +99,12 @@ __meta__ = {
 [node name="WallSprite" type="Sprite" parent="Walls/Wall2" index="0"]
 
 scale = Vector2( 1, 13 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="WallCollision" type="CollisionShape2D" parent="Walls/Wall2" index="1"]
 
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Wall3" type="StaticBody2D" parent="Walls" index="2" groups=[
 "not_player",
@@ -191,12 +125,12 @@ __meta__ = {
 
 [node name="WallCollsion" type="CollisionShape2D" parent="Walls/Wall3" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="WallSprite" type="Sprite" parent="Walls/Wall3" index="1"]
 
 scale = Vector2( 24.4, 1 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Wall4" type="StaticBody2D" parent="Walls" index="3" groups=[
@@ -218,17 +152,17 @@ __meta__ = {
 
 [node name="WallCollision" type="CollisionShape2D" parent="Walls/Wall4" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="WallSprite" type="Sprite" parent="Walls/Wall4" index="1"]
 
 scale = Vector2( 24.4, 1 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Players" type="Node2D" parent="." index="5"]
+[node name="Players" type="Node2D" parent="." index="4"]
 
-[node name="LevelTimer" type="Timer" parent="." index="6"]
+[node name="LevelTimer" type="Timer" parent="." index="5"]
 
 process_mode = 1
 wait_time = 60.0
