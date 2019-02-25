@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://items/gun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://graphics/gun_2.png" type="Texture" id=2]
+
+[node name="Gun" index="0" instance=ExtResource( 1 )]
+
+bullet_speed = 1000
+damage = 17
+gun_number = 2
+gun_ammo_count = 50
+
+[node name="GunSprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+
+
