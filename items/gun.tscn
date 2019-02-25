@@ -28,7 +28,7 @@ damage = 100
 gun_number = 1
 gun_ammo_count = 5
 
-[node name="Gun1Sprite" type="Sprite" parent="." index="0"]
+[node name="GunSprite" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
