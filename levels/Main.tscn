@@ -1,31 +1,19 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://graphics/background.png" type="Texture" id=1]
 [ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://characters/player/player.gd" type="Script" id=3]
-[ext_resource path="res://characters/enemy/enemy.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scripts/gun_variables.gd" type="Script" id=5]
-[ext_resource path="res://graphics/gun_1.png" type="Texture" id=6]
-[ext_resource path="res://graphics/gun_2.png" type="Texture" id=7]
-[ext_resource path="res://graphics/wall.png" type="Texture" id=8]
-[ext_resource path="res://pause_menu/PauseMenu.tscn" type="PackedScene" id=9]
-
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 32.129, 10.156 )
+[ext_resource path="res://characters/enemy/enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://items/gun1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://items/gun2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://graphics/wall.png" type="Texture" id=6]
+[ext_resource path="res://pause_menu/PauseMenu.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32.1642, 32.305 )
-
-[sub_resource type="RectangleShape2D" id=3]
-
-custom_solver_bias = 0.0
 extents = Vector2( 32.3673, 412.779 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 779.543, 31.7486 )
@@ -43,90 +31,34 @@ texture = ExtResource( 1 )
 position = Vector2( 0, 110 )
 collision_mask = 15
 collision/safe_margin = 0.05
-script = ExtResource( 3 )
 
 [node name="Enemies" type="Node" parent="." index="2"]
 
 editor/display_folded = true
 
-[node name="Enemy" parent="Enemies" index="0" instance=ExtResource( 4 )]
+[node name="Enemy" parent="Enemies" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( 805.116, 325.649 )
 
-[node name="Enemy2" parent="Enemies" index="1" instance=ExtResource( 4 )]
+[node name="Enemy2" parent="Enemies" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 776.005, 159.475 )
 
-[node name="Enemy3" parent="Enemies" index="2" instance=ExtResource( 4 )]
+[node name="Enemy3" parent="Enemies" index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 807.765, 489.741 )
 
-[node name="Gun1" type="Area2D" parent="." index="3"]
+[node name="Guns" type="Node" parent="." index="3"]
 
-editor/display_folded = true
-position = Vector2( 543.817, 293.954 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 8
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 5 )
-_sections_unfolded = [ "Collision" ]
-__meta__ = {
-"_edit_group_": true
-}
-bullet_speed = 100
-damage = 100
-gun_number = 1
-gun_ammo_count = 5
+[node name="Gun" parent="Guns" index="0" instance=ExtResource( 4 )]
 
-[node name="Gun1Sprite" type="Sprite" parent="Gun1" index="0"]
+position = Vector2( 560, 280 )
 
-texture = ExtResource( 6 )
-_sections_unfolded = [ "Transform" ]
+[node name="Gun2" parent="Guns" index="1" instance=ExtResource( 5 )]
 
-[node name="GunCollision" type="CollisionShape2D" parent="Gun1" index="1"]
+position = Vector2( 280, 460 )
 
-scale = Vector2( 1, 3.1726 )
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Gun2" type="Area2D" parent="." index="4"]
-
-editor/display_folded = true
-position = Vector2( 314.156, 439.543 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 8
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 5 )
-_sections_unfolded = [ "Collision", "Transform" ]
-__meta__ = {
-"_edit_group_": true
-}
-bullet_speed = 1000
-damage = 17
-gun_number = 2
-gun_ammo_count = 50
-
-[node name="Gun2Sprite" type="Sprite" parent="Gun2" index="0"]
-
-texture = ExtResource( 7 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="GunCollision" type="CollisionShape2D" parent="Gun2" index="1"]
-
-shape = SubResource( 2 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Walls" type="Node" parent="." index="5"]
+[node name="Walls" type="Node" parent="." index="4"]
 
 editor/display_folded = true
 
@@ -150,12 +82,12 @@ __meta__ = {
 [node name="WallSprite" type="Sprite" parent="Walls/Wall" index="0"]
 
 scale = Vector2( 1, 13 )
-texture = ExtResource( 8 )
+texture = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="WallCollision" type="CollisionShape2D" parent="Walls/Wall" index="1"]
 
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Wall2" type="StaticBody2D" parent="Walls" index="1" groups=[
 "not_player",
@@ -177,12 +109,12 @@ __meta__ = {
 [node name="WallSprite" type="Sprite" parent="Walls/Wall2" index="0"]
 
 scale = Vector2( 1, 13 )
-texture = ExtResource( 8 )
+texture = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="WallCollision" type="CollisionShape2D" parent="Walls/Wall2" index="1"]
 
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Wall3" type="StaticBody2D" parent="Walls" index="2" groups=[
 "not_player",
@@ -203,12 +135,12 @@ __meta__ = {
 
 [node name="WallCollsion" type="CollisionShape2D" parent="Walls/Wall3" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="WallSprite" type="Sprite" parent="Walls/Wall3" index="1"]
 
 scale = Vector2( 24.4, 1 )
-texture = ExtResource( 8 )
+texture = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Wall4" type="StaticBody2D" parent="Walls" index="3" groups=[
@@ -230,15 +162,15 @@ __meta__ = {
 
 [node name="WallCollision" type="CollisionShape2D" parent="Walls/Wall4" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="WallSprite" type="Sprite" parent="Walls/Wall4" index="1"]
 
 scale = Vector2( 24.4, 1 )
-texture = ExtResource( 8 )
+texture = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="6"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
 
 layer = 2
 offset = Vector2( 0, 0 )
@@ -246,7 +178,7 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="PauseMenu" parent="CanvasLayer" index="0" instance=ExtResource( 9 )]
+[node name="PauseMenu" parent="CanvasLayer" index="0" instance=ExtResource( 7 )]
 
 visible = false
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://characters/player/player_multiplayer.gd" type="Script" id=1]
+[ext_resource path="res://characters/player/player.gd" type="Script" id=1]
 [ext_resource path="res://graphics/Player.png" type="Texture" id=2]
 [ext_resource path="res://graphics/bullet.png" type="Texture" id=3]
 [ext_resource path="res://gui/GUI.tscn" type="PackedScene" id=4]
@@ -15,7 +15,7 @@ extents = Vector2( 29.3281, 28.8452 )
 custom_solver_bias = 0.0
 extents = Vector2( 32.1106, 32.283 )
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -121,11 +121,11 @@ _sections_unfolded = [ "Rect", "Theme", "custom_constants" ]
 
 visible = false
 
-[connection signal="ammo_changed" from="." to="CanvasLayer/GUI" method="_on_player_ammo_changed"]
+[connection signal="ammo_changed" from="." to="CanvasLayer/GUI/VBoxContainer/HBoxContainer/AmmoCounter" method="_on_Player_ammo_changed"]
 
-[connection signal="gun_changed" from="." to="CanvasLayer/GUI" method="_on_player_gun_changed"]
+[connection signal="gun_changed" from="." to="CanvasLayer/GUI/VBoxContainer/HBoxContainer/GunName" method="_on_Player_gun_changed"]
 
-[connection signal="health_changed" from="." to="CanvasLayer/GUI" method="_on_player_health_changed"]
+[connection signal="health_changed" from="." to="CanvasLayer/GUI/VBoxContainer/HBoxContainer/HealthCounter" method="_on_Player_health_changed"]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 

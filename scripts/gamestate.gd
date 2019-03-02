@@ -82,7 +82,7 @@ remote func pre_start_game(spawn_points):
 
 	get_tree().get_root().get_node("Lobby").hide()
 
-	var player_scene = load("res://characters/player/player.tscn")
+	var player_scene = load("res://characters/player/player_multiplayer.tscn")
 
 	for p_id in spawn_points:
 		var spawn_pos = world.get_node("SpawnPoints/" + str(spawn_points[p_id])).position

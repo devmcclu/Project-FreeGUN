@@ -1,13 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://gui/GUI.gd" type="Script" id=1]
-[ext_resource path="res://gui/Timer.tscn" type="PackedScene" id=2]
-[ext_resource path="res://gui/KillCounter.tscn" type="PackedScene" id=3]
-[ext_resource path="res://gui/HealthCounter.tscn" type="PackedScene" id=4]
-[ext_resource path="res://gui/GunName.tscn" type="PackedScene" id=5]
-[ext_resource path="res://gui/AmmoCounter.tscn" type="PackedScene" id=6]
+[ext_resource path="res://gui/Timer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gui/KillCounter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui/HealthCounter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gui/GunName.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gui/AmmoCounter.tscn" type="PackedScene" id=5]
 
-[node name="GUI" type="MarginContainer" index="0"]
+[node name="GUI" type="MarginContainer"]
 
 anchor_left = 0.5
 anchor_top = 1.0
@@ -27,7 +26,6 @@ custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
 custom_constants/margin_bottom = 20
-script = ExtResource( 1 )
 _sections_unfolded = [ "Focus", "Hint", "Mouse", "Rect", "Size Flags", "Theme", "custom_constants" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." index="0"]
@@ -65,14 +63,14 @@ size_flags_vertical = 2
 alignment = 0
 _sections_unfolded = [ "Anchor", "Margin", "Rect", "Size Flags" ]
 
-[node name="Timer" parent="VBoxContainer/HBoxContainer2" index="0" instance=ExtResource( 2 )]
+[node name="Timer" parent="VBoxContainer/HBoxContainer2" index="0" instance=ExtResource( 1 )]
 
 margin_left = 0.0
 margin_right = 1128.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 
-[node name="KillCounter" parent="VBoxContainer/HBoxContainer2" index="1" instance=ExtResource( 3 )]
+[node name="KillCounter" parent="VBoxContainer/HBoxContainer2" index="1" instance=ExtResource( 2 )]
 
 margin_left = 1132.0
 margin_bottom = 40.0
@@ -95,21 +93,21 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags" ]
 
-[node name="HealthCounter" parent="VBoxContainer/HBoxContainer" index="0" instance=ExtResource( 4 )]
+[node name="HealthCounter" parent="VBoxContainer/HBoxContainer" index="0" instance=ExtResource( 3 )]
 
 margin_left = 0.0
 margin_right = 562.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 
-[node name="GunName" parent="VBoxContainer/HBoxContainer" index="1" instance=ExtResource( 5 )]
+[node name="GunName" parent="VBoxContainer/HBoxContainer" index="1" instance=ExtResource( 4 )]
 
 margin_left = 566.0
 margin_right = 1128.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 
-[node name="AmmoCounter" parent="VBoxContainer/HBoxContainer" index="2" instance=ExtResource( 6 )]
+[node name="AmmoCounter" parent="VBoxContainer/HBoxContainer" index="2" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 margin_left = 1132.0
