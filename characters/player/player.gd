@@ -69,7 +69,7 @@ func _physics_process(delta):
 
 func check_shoot():
 	if Input.is_action_just_pressed("fire_gun"):
-		self.shoot()
+		self._shoot()
 
 #On gun pickup, change gun variables
 func _on_Area2D_area_entered(area):

@@ -52,7 +52,7 @@ func get_input():
 		self.rotation = slave_rotation
 		slave_pos = position # To avoid jitter
 
-sync func shoot():
+sync func _shoot():
 	if gun_ammo[gun_stats[0]] > 0:
 		print("fire")
 		#Bullet scene is loading into game
@@ -63,8 +63,6 @@ sync func shoot():
 		new_bullet.rotation = self.rotation
 		#Velocity of the bullet is set to the speed of the weapon's bullets
 		new_bullet.linear_velocity = Vector2(cos(self.rotation)*gun_stats[1], sin(self.rotation)*gun_stats[1])
-		#The parent of the bullet is set to the player
-		new_bullet.parent = self
 		#Check to see if player still has ammo for all guns besides starting weapon
 		if gun_stats[0] > 0:
 			self.gun_ammo[gun_stats[0]] -= 1
