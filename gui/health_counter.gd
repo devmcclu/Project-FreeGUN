@@ -6,6 +6,6 @@ extends HBoxContainer
 
 onready var player = $"../../../../../"
 
-func _on_Player_health_changed():
-	$Counter/Panel/Amount.text = str(player.health)
+func _on_health_changed():
+	$Counter/Panel/Amount.text = str(player.get_node("Health").health)
 	pass # replace with function body

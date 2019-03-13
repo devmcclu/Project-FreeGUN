@@ -3,13 +3,12 @@
 [ext_resource path="res://weapons/bullet/bullet.gd" type="Script" id=1]
 [ext_resource path="res://graphics/bullet.png" type="Texture" id=2]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16.0186, 4.96663 )
 
-[node name="Bullet" type="RigidBody2D" index="0"]
+[node name="Bullet" type="RigidBody2D"]
 
 position = Vector2( 521.097, 238.836 )
 input_pickable = false
