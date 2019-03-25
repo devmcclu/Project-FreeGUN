@@ -2,9 +2,10 @@
 
 [ext_resource path="res://levels/deathmatch.gd" type="Script" id=1]
 [ext_resource path="res://graphics/background.png" type="Texture" id=2]
-[ext_resource path="res://weapons/gun/gun1pickup.tscn" type="PackedScene" id=3]
-[ext_resource path="res://weapons/gun/gun2pickup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://weapons/gun/gun_pickup/gun1pickup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://weapons/gun/gun_pickup/gun2pickup.tscn" type="PackedScene" id=4]
 [ext_resource path="res://graphics/wall.png" type="Texture" id=5]
+
 
 
 
