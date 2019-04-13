@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://characters/player/player.gd" type="Script" id=1]
-[ext_resource path="res://graphics/Player.png" type="Texture" id=2]
-[ext_resource path="res://graphics/bullet.png" type="Texture" id=3]
-[ext_resource path="res://weapons/gun/gun.tscn" type="PackedScene" id=4]
-[ext_resource path="res://gui/GUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gui/GUI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://graphics/Player.png" type="Texture" id=3]
+[ext_resource path="res://graphics/bullet.png" type="Texture" id=4]
+[ext_resource path="res://weapons/gun/gun.tscn" type="PackedScene" id=5]
 [ext_resource path="res://characters/health.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -27,70 +27,7 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform", "collision" ]
 speed = 200
 
-[node name="PlayerCollision" type="CollisionShape2D" parent="." index="0"]
-
-shape = SubResource( 1 )
-
-[node name="PlayerSprite" type="Sprite" parent="." index="1"]
-
-rotation = 1.5708
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="BulletSpawn" type="Sprite" parent="." index="2"]
-
-visible = false
-position = Vector2( 48, 0 )
-rotation = 1.5708
-texture = ExtResource( 3 )
-_sections_unfolded = [ "Offset", "Transform" ]
-
-[node name="Gun" parent="." index="3" instance=ExtResource( 4 )]
-
-position = Vector2( 48, 0 )
-
-[node name="Area2D" type="Area2D" parent="." index="4"]
-
-visible = false
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
-
-shape = SubResource( 2 )
-
-[node name="Camera2D" type="Camera2D" parent="." index="5"]
-
-anchor_mode = 1
-rotating = false
-current = false
-zoom = Vector2( 1, 1 )
-limit_left = -10000000
-limit_top = -10000000
-limit_right = 10000000
-limit_bottom = 10000000
-limit_smoothed = false
-drag_margin_h_enabled = false
-drag_margin_v_enabled = false
-smoothing_enabled = false
-smoothing_speed = 5.0
-offset_v = 0.0
-offset_h = 0.0
-drag_margin_left = 0.2
-drag_margin_top = 0.2
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
-editor_draw_screen = true
-editor_draw_limits = false
-editor_draw_drag_margin = false
-_sections_unfolded = [ "Drag Margin", "Smoothing" ]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="6"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -123,9 +60,72 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "Theme", "custom_constants" ]
 
-[node name="GUI" parent="CanvasLayer" index="1" instance=ExtResource( 5 )]
+[node name="GUI" parent="CanvasLayer" index="1" instance=ExtResource( 2 )]
 
 visible = false
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="." index="1"]
+
+shape = SubResource( 1 )
+
+[node name="PlayerSprite" type="Sprite" parent="." index="2"]
+
+rotation = 1.5708
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="BulletSpawn" type="Sprite" parent="." index="3"]
+
+visible = false
+position = Vector2( 48, 0 )
+rotation = 1.5708
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="Gun" parent="." index="4" instance=ExtResource( 5 )]
+
+position = Vector2( 48, 0 )
+
+[node name="Area2D" type="Area2D" parent="." index="5"]
+
+visible = false
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="." index="6"]
+
+anchor_mode = 1
+rotating = false
+current = false
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Drag Margin", "Smoothing" ]
 
 [node name="Health" type="Node" parent="." index="7"]
 
