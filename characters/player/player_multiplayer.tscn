@@ -1,17 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/player/player_multiplayer.gd" type="Script" id=2]
-[ext_resource path="res://characters/health_multiplayer.gd" type="Script" id=3]
+[ext_resource path="res://weapons/gun/gun_multiplayer.gd" type="Script" id=3]
+[ext_resource path="res://characters/health_multiplayer.gd" type="Script" id=4]
 
 [node name="Player" index="0" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 
-[node name="Health" parent="." index="6"]
+[node name="Gun" parent="." index="4"]
 
 script = ExtResource( 3 )
 
-[connection signal="health_changed" from="Health" to="CanvasLayer/GUI/VBoxContainer/HBoxContainer/HealthCounter" method="_on_health_changed"]
+[node name="Health" parent="." index="7"]
+
+script = ExtResource( 4 )
 
 

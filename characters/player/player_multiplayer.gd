@@ -6,7 +6,7 @@ slave var slave_rotation = 0
 slave var slave_health = 100
 
 func make_gui():
-	emit_signal("gun_changed")
+	#emit_signal("gun_changed")
 	
 	if is_network_master():
 		$"Camera2D".make_current()
@@ -43,29 +43,29 @@ func get_input():
 		self.rotation = slave_rotation
 		slave_pos = position # To avoid jitter
 
-sync func _shoot():
-	if gun_ammo[gun_stats[0]] > 0:
-		print("fire")
-		#Bullet scene is loading into game
-		var new_bullet = load("res://weapons/bullet/bullet.tscn").instance()
-		self.add_child(new_bullet)
-		#Bullet position and rotation is set to the spawn point and rotation on the player
-		new_bullet.position = $"BulletSpawn".global_position
-		new_bullet.rotation = self.rotation
-		#Velocity of the bullet is set to the speed of the weapon's bullets
-		new_bullet.linear_velocity = Vector2(cos(self.rotation)*gun_stats[1], sin(self.rotation)*gun_stats[1])
-		#Check to see if player still has ammo for all guns besides starting weapon
-		if gun_stats[0] > 0:
-			self.gun_ammo[gun_stats[0]] -= 1
-			print(gun_ammo[gun_stats[0]])
-			emit_signal("ammo_changed")
-			print("one less")
-			print(new_bullet.parent)
+#sync func _shoot():
+#	if gun_ammo[gun_stats[0]] > 0:
+#		print("fire")
+#		#Bullet scene is loading into game
+#		var new_bullet = load("res://weapons/bullet/bullet.tscn").instance()
+#		self.add_child(new_bullet)
+#		#Bullet position and rotation is set to the spawn point and rotation on the player
+#		new_bullet.position = $"BulletSpawn".global_position
+#		new_bullet.rotation = self.rotation
+#		#Velocity of the bullet is set to the speed of the weapon's bullets
+#		new_bullet.linear_velocity = Vector2(cos(self.rotation)*gun_stats[1], sin(self.rotation)*gun_stats[1])
+#		#Check to see if player still has ammo for all guns besides starting weapon
+#		if gun_stats[0] > 0:
+#			self.gun_ammo[gun_stats[0]] -= 1
+#			print(gun_ammo[gun_stats[0]])
+#			emit_signal("ammo_changed")
+#			print("one less")
+#			print(new_bullet.parent)
 
-func check_shoot():
-	if is_network_master():
-		if Input.is_action_just_pressed("fire_gun"):
-			rpc('_shoot')
+#func check_shoot():
+#	if is_network_master():
+#		if Input.is_action_just_pressed("fire_gun"):
+#			rpc('_shoot')
 
 func set_player_name(new_name):
 	get_node("CanvasLayer/Label").set_text(new_name)
