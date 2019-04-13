@@ -4,8 +4,8 @@ func _ready():
 	make_gui()
 
 func make_gui():
-	emit_signal("gun_changed")
-	emit_signal("health_changed")
+	#emit_signal("gun_changed")
+	#emit_signal("health_changed")
 	$"Camera2D".make_current()
 	$"CanvasLayer/GUI".visible = true
 	#fire_gun = Input.is_action_just_pressed("fire_gun")

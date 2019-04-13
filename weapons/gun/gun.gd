@@ -9,20 +9,21 @@ var current_gun = 0
 var bullet_speed = 500
 var damage = 34
 
-#var switch_weapon_1 = Input.is_action_just_pressed("switch_weapon_1")
-#var switch_weapon_2 = Input.is_action_just_pressed("switch_weapon_2")
-#var switch_weapon_3 = Input.is_action_just_pressed("switch_weapon_3")
-
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
-	#emit_signal("gun_changed")
-	#emit_signal("ammo_changed")
+	emit_signal("gun_changed")
+	emit_signal("ammo_changed")
+	make_gui()
 	pass
 
 func _process(delta):
 	check_shoot()
-	_change_gun()
+	change_gun()
+
+func make_gui():
+	emit_signal("gun_changed")
+	emit_signal("ammo_changed")
 
 func _shoot():
 	if $"Inventory".gun_ammo[current_gun] > 0:
@@ -45,7 +46,7 @@ func _shoot():
 			print("one less")
 		print(new_bullet.parent)
 
-func _change_gun():
+func change_gun():
 	#Switch player weapon when switch weapon key is pressed
 	if Input.is_action_just_pressed("switch_weapon_1"):
 		if $"Inventory".has_guns[0] == true:

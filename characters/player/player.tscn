@@ -17,7 +17,7 @@ extents = Vector2( 29.3281, 28.8452 )
 custom_solver_bias = 0.0
 extents = Vector2( 32.1106, 32.283 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -130,10 +130,6 @@ visible = false
 [node name="Health" type="Node" parent="." index="7"]
 
 script = ExtResource( 6 )
-
-[connection signal="ammo_changed" from="." to="CanvasLayer/GUI/VBoxContainer/HBoxContainer/AmmoCounter" method="_on_Player_ammo_changed"]
-
-[connection signal="gun_changed" from="." to="CanvasLayer/GUI/VBoxContainer/HBoxContainer/GunName" method="_on_Player_gun_changed"]
 
 [connection signal="ammo_changed" from="Gun" to="CanvasLayer/GUI/VBoxContainer/HBoxContainer/AmmoCounter" method="_on_Gun_ammo_changed"]
 
