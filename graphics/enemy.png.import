@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/enemy.png-e920338f3b186f92f777b1fe49fa1a2d.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://graphics/enemy.png"
-source_md5="2c8c02d6c043feec03c4a654cd8f34bb"
-
 dest_files=[ "res://.import/enemy.png-e920338f3b186f92f777b1fe49fa1a2d.stex" ]
-dest_md5="5113d31a61d8b2a41133a3276d6b05e7"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true
