@@ -6,20 +6,9 @@ slave var slave_rotation = 0
 slave var slave_health = 100
 
 func make_gui():
-	emit_signal("gun_changed")
-	emit_signal("health_changed")
-	
 	if is_network_master():
 		$"Camera2D".make_current()
 		$"CanvasLayer/GUI".visible = true
-
-func health_check():
-	if is_network_master():
-		emit_signal("health_changed")
-	else:
-		slave_health = health
-	if self.health <= 0:
-		self.queue_free()
 
 func get_input():
 	#Create controlable Vector2 for player movement input
@@ -51,32 +40,6 @@ func get_input():
 	else:
 		self.rotation = slave_rotation
 		slave_pos = position # To avoid jitter
-
-sync func shoot():
-	if gun_ammo[gun_stats[0]] > 0:
-		print("fire")
-		#Bullet scene is loading into game
-		var new_bullet = load("res://bullet/bullet.tscn").instance()
-		$"../".add_child(new_bullet)
-		#Bullet position and rotation is set to the spawn point and rotation on the player
-		new_bullet.position = $"BulletSpawn".global_position
-		new_bullet.rotation = self.rotation
-		#Velocity of the bullet is set to the speed of the weapon's bullets
-		new_bullet.linear_velocity = Vector2(cos(self.rotation)*gun_stats[1], sin(self.rotation)*gun_stats[1])
-		#The parent of the bullet is set to the player
-		new_bullet.parent = self
-		#Check to see if player still has ammo for all guns besides starting weapon
-		if gun_stats[0] > 0:
-			self.gun_ammo[gun_stats[0]] -= 1
-			print(gun_ammo[gun_stats[0]])
-			emit_signal("ammo_changed")
-			print("one less")
-			print(new_bullet.parent)
-
-func check_shoot():
-	if is_network_master():
-		if Input.is_action_just_pressed("fire_gun"):
-			rpc('shoot')
 
 func set_player_name(new_name):
 	get_node("CanvasLayer/Label").set_text(new_name)

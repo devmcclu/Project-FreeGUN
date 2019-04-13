@@ -1,15 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://characters/enemy/enemy.gd" type="Script" id=1]
 [ext_resource path="res://graphics/enemy.png" type="Texture" id=2]
 [ext_resource path="res://graphics/bullet.png" type="Texture" id=3]
+[ext_resource path="res://characters/health.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32.152, 31.9393 )
 
-[node name="Enemy" type="KinematicBody2D" index="0"]
+[node name="Enemy" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -41,6 +42,10 @@ position = Vector2( 48, 0 )
 rotation = 1.5708
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Health" type="Node" parent="." index="4"]
+
+script = ExtResource( 4 )
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
 

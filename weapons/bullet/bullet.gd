@@ -1,17 +1,9 @@
 extends RigidBody2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
-#Parent player of the bullet will be set to this in player.gd
-var parent
+onready var parent = self.get_parent()
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
 	set_as_toplevel(true)
-	pass
 
 #Check the collision of the bullet with objects
 func _on_bullet_body_entered(body):
@@ -20,9 +12,10 @@ func _on_bullet_body_entered(body):
 		#Player/enemy collision layer
 		1:
 			if self.parent != body:
-				body.health -= parent.gun_stats[2]
-				body.health_check()
-				print(body.health)
+#				body.health -= parent.gun_stats[2]
+#				body.health_check()
+				body.get_node("Health").health_check(parent.damage)
+				print(body.get_node("Health").health)
 				self.queue_free()
 		#Wall collision layer
 		2:
