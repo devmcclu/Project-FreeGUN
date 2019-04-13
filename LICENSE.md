@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2018 devmcclu
+Copyright (c) 2018-Make the player scene more modular with the introduction of a separate gun node2019 Devlin McClure
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
