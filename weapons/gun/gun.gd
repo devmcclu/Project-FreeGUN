@@ -12,8 +12,8 @@ var damage = 34
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
-	emit_signal("gun_changed")
-	emit_signal("ammo_changed")
+	#emit_signal("gun_changed")
+	#emit_signal("ammo_changed")
 	make_gui()
 	pass
 
