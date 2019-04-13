@@ -3,10 +3,15 @@
 [ext_resource path="res://graphics/background.png" type="Texture" id=1]
 [ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://characters/enemy/enemy.tscn" type="PackedScene" id=3]
-[ext_resource path="res://items/gun1.tscn" type="PackedScene" id=4]
-[ext_resource path="res://items/gun2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://weapons/gun/gun_pickup/gun1pickup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://weapons/gun/gun_pickup/gun2pickup.tscn" type="PackedScene" id=5]
 [ext_resource path="res://graphics/wall.png" type="Texture" id=6]
 [ext_resource path="res://pause_menu/PauseMenu.tscn" type="PackedScene" id=7]
+
+
+
+
+
 
 [sub_resource type="RectangleShape2D" id=2]
 
