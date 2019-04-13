@@ -10,10 +10,6 @@ var bullet_speed = 500
 var damage = 34
 
 func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	#emit_signal("gun_changed")
-	#emit_signal("ammo_changed")
 	make_gui()
 	pass
 
@@ -29,8 +25,6 @@ func _shoot():
 	if $"Inventory".gun_ammo[current_gun] > 0:
 		print("fire")
 		#Bullet scene is loading into game
-		#var new_bullet = load("res://weapons/bullet/bullet.tscn").instance()
-		#$"../".add_child(new_bullet)
 		var new_bullet = Bullet.instance()
 		self.add_child(new_bullet)
 		#Bullet position and rotation is set to the spawn point and rotation on the player
@@ -50,7 +44,6 @@ func change_gun():
 	#Switch player weapon when switch weapon key is pressed
 	if Input.is_action_just_pressed("switch_weapon_1"):
 		if $"Inventory".has_guns[0] == true:
-			#self.gun_stats = [0, 500, 34]
 			self.current_gun = 0
 			self.bullet_speed = 500
 			self.damage = 34
@@ -59,7 +52,6 @@ func change_gun():
 			emit_signal("ammo_changed")
 	if Input.is_action_just_pressed("switch_weapon_2"):
 		if $"Inventory".has_guns[1] == true:
-			#gun_stats = [1, 100, 100]
 			self.current_gun = 1
 			self.bullet_speed = 100
 			self.damage = 100
@@ -68,7 +60,6 @@ func change_gun():
 			emit_signal("ammo_changed")
 	if Input.is_action_just_pressed("switch_weapon_3"):
 		if $"Inventory".has_guns[2] == true:
-			#gun_stats = [2, 1000, 50]
 			self.current_gun = 2
 			self.bullet_speed = 1000
 			self.damage = 50
