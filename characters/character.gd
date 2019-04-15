@@ -1,10 +1,9 @@
 extends KinematicBody2D
-
 class_name Character
+"""
+Base character class. Gives node base variables and signals
+"""
 
-signal gun_changed
-signal ammo_changed
-signal health_changed
 
 #Base player variables and stats
 export (int) var speed = 200
