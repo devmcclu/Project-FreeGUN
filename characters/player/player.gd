@@ -1,6 +1,8 @@
 extends Character
-
 class_name Player
+"""
+Base player class. Gives the player the ability to move
+"""
 
 func _ready() -> void:
 	make_gui()
