@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Character
+
 signal gun_changed
 signal ammo_changed
 signal health_changed
