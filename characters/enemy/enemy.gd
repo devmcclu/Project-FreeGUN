@@ -1,4 +1,4 @@
-extends "res://characters/character.gd"
+extends Character
 
 func _on_ShootTimer_timeout():
 	#self._shoot()
