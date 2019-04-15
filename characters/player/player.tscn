@@ -31,12 +31,12 @@ valign = 1
 [node name="GUI" parent="CanvasLayer" instance=ExtResource( 2 )]
 visible = false
 
-[node name="PlayerCollision" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
-
 [node name="PlayerSprite" type="Sprite" parent="."]
 rotation = 1.5708
 texture = ExtResource( 3 )
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
 
 [node name="Gun" parent="." instance=ExtResource( 4 )]
 position = Vector2( 48, 0 )
