@@ -1,4 +1,4 @@
-extends "res://characters/player/player.gd"
+extends Player
 
 slave var slave_pos = Vector2()
 slave var slave_velocity = Vector2()

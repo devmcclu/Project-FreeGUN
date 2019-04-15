@@ -1,4 +1,6 @@
-extends "res://characters/character.gd"
+extends Character
+
+class_name Player
 
 func _ready():
 	make_gui()
