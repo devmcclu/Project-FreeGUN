@@ -2,11 +2,12 @@ extends RigidBody2D
 
 onready var parent = self.get_parent()
 
-func _ready():
+func _ready() -> void:
 	set_as_toplevel(true)
 
+
 #Check the collision of the bullet with objects
-func _on_bullet_body_entered(body):
+func _on_bullet_body_entered(body: PhysicsBody2D) -> void:
 	#Find the collision layer on contact
 	match body.collision_layer:
 		#Player/enemy collision layer
@@ -22,6 +23,7 @@ func _on_bullet_body_entered(body):
 			self.queue_free()
 			print("nice wall")
 
+
 #Delete bullet after timer runs out
-func _on_Timer_timeout():
+func _on_Timer_timeout() -> void:
 	self.queue_free()

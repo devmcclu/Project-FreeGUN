@@ -1,142 +1,60 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://characters/player/player.gd" type="Script" id=1]
 [ext_resource path="res://gui/GUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://graphics/Player.png" type="Texture" id=3]
-[ext_resource path="res://graphics/bullet.png" type="Texture" id=4]
-[ext_resource path="res://weapons/gun/gun.tscn" type="PackedScene" id=5]
-[ext_resource path="res://characters/health.gd" type="Script" id=6]
+[ext_resource path="res://weapons/gun/gun.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/health.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
 extents = Vector2( 29.3281, 28.8452 )
 
 [sub_resource type="RectangleShape2D" id=2]
-
-custom_solver_bias = 0.0
 extents = Vector2( 32.1106, 32.283 )
 
-[node name="Player" type="KinematicBody2D" index="0"]
-
-input_pickable = false
-collision_layer = 1
+[node name="Player" type="KinematicBody2D"]
 collision_mask = 7
-collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Transform", "collision" ]
-speed = 200
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-layer = 1
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-
-[node name="Label" type="Label" parent="CanvasLayer" index="0"]
-
+[node name="Label" type="Label" parent="CanvasLayer"]
 visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 620.0
 margin_top = 300.0
 margin_right = 660.0
 margin_bottom = 314.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 text = "Name"
 align = 1
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Rect", "Theme", "custom_constants" ]
 
-[node name="GUI" parent="CanvasLayer" index="1" instance=ExtResource( 2 )]
-
+[node name="GUI" parent="CanvasLayer" instance=ExtResource( 2 )]
 visible = false
 
-[node name="PlayerCollision" type="CollisionShape2D" parent="." index="1"]
-
-shape = SubResource( 1 )
-
-[node name="PlayerSprite" type="Sprite" parent="." index="2"]
-
+[node name="PlayerSprite" type="Sprite" parent="."]
 rotation = 1.5708
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="BulletSpawn" type="Sprite" parent="." index="3"]
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
 
-visible = false
-position = Vector2( 48, 0 )
-rotation = 1.5708
-texture = ExtResource( 4 )
-_sections_unfolded = [ "Offset", "Transform" ]
-
-[node name="Gun" parent="." index="4" instance=ExtResource( 5 )]
-
+[node name="Gun" parent="." instance=ExtResource( 4 )]
 position = Vector2( 48, 0 )
 
-[node name="Area2D" type="Area2D" parent="." index="5"]
-
+[node name="Area2D" type="Area2D" parent="."]
 visible = false
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
-
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 2 )
 
-[node name="Camera2D" type="Camera2D" parent="." index="6"]
+[node name="Health" type="Node" parent="."]
+script = ExtResource( 5 )
 
-anchor_mode = 1
-rotating = false
-current = false
-zoom = Vector2( 1, 1 )
-limit_left = -10000000
-limit_top = -10000000
-limit_right = 10000000
-limit_bottom = 10000000
-limit_smoothed = false
+[node name="Camera2D" type="Camera2D" parent="."]
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
-smoothing_enabled = false
-smoothing_speed = 5.0
-offset_v = 0.0
-offset_h = 0.0
-drag_margin_left = 0.2
-drag_margin_top = 0.2
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
-editor_draw_screen = true
-editor_draw_limits = false
-editor_draw_drag_margin = false
-_sections_unfolded = [ "Drag Margin", "Smoothing" ]
-
-[node name="Health" type="Node" parent="." index="7"]
-
-script = ExtResource( 6 )
 
 [connection signal="ammo_changed" from="Gun" to="CanvasLayer/GUI/VBoxContainer/HBoxContainer/AmmoCounter" method="_on_Gun_ammo_changed"]
-
 [connection signal="gun_changed" from="Gun" to="CanvasLayer/GUI/VBoxContainer/HBoxContainer/GunName" method="_on_Gun_gun_changed"]
-
 [connection signal="area_entered" from="Area2D" to="Gun" method="_on_Area2D_area_entered"]
-
 [connection signal="health_changed" from="Health" to="CanvasLayer/GUI/VBoxContainer/HBoxContainer/HealthCounter" method="_on_health_changed"]
-
-

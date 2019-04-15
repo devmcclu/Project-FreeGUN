@@ -5,22 +5,25 @@ const Bullet = preload("res://weapons/bullet/bullet.tscn")
 signal gun_changed
 signal ammo_changed
 
-var current_gun = 0
-var bullet_speed = 500
-var damage = 34
+var current_gun: int = 0
+var bullet_speed: int = 500
+var damage: int = 34
 
-func _ready():
+func _ready() -> void:
 	make_gui()
 
-func _process(delta):
+
+func _process(delta: float) -> void:
 	check_shoot()
 	change_gun()
 
-func make_gui():
+
+func make_gui() -> void:
 	emit_signal("gun_changed")
 	emit_signal("ammo_changed")
 
-sync func _shoot():
+
+sync func _shoot() -> void:
 	if $"Inventory".gun_ammo[current_gun] > 0:
 		print("fire")
 		#Bullet scene is loading into game
@@ -39,7 +42,8 @@ sync func _shoot():
 			print("one less")
 		print(new_bullet.parent)
 
-func change_gun():
+
+func change_gun() -> void:
 	#Switch player weapon when switch weapon key is pressed
 	if Input.is_action_just_pressed("switch_weapon_1"):
 		if $"Inventory".has_guns[0] == true:
@@ -66,12 +70,14 @@ func change_gun():
 			emit_signal("gun_changed")
 			emit_signal("ammo_changed")
 
-func check_shoot():
+
+func check_shoot() -> void:
 	if is_network_master():
 		if Input.is_action_just_pressed("fire_gun"):
 			rpc('_shoot')
 
-func _on_Area2D_area_entered(area):
+
+func _on_Area2D_area_entered(area: Area2D) -> void:
 	self.current_gun = area.gun_number
 	self.bullet_speed = area.bullet_speed
 	self.damage = area.damage

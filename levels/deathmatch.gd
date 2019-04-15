@@ -4,7 +4,7 @@ extends Node
 # var a = 2
 # var b = "textvar"
 
-func _ready():
+func _ready() -> void:
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	pass
