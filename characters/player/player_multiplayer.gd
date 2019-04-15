@@ -1,9 +1,8 @@
 extends Player
 
-slave var slave_pos = Vector2()
-slave var slave_velocity = Vector2()
-slave var slave_rotation = 0
-slave var slave_health = 100
+puppet var puppet_pos = Vector2()
+puppet var puppet_velocity = Vector2()
+puppet var puppet_rotation = 0
 
 func make_gui():
 	if is_network_master():
@@ -24,11 +23,11 @@ func get_input():
 		if Input.is_action_pressed('player_move_up'):
 			velocity.y -= 1
 		
-		rset("slave_velocity", velocity)
-		rset("slave_pos", position)
+		rset("puppet_velocity", velocity)
+		rset("puppet_pos", position)
 	else:
-		position = slave_pos
-		velocity = slave_velocity
+		position = puppet_pos
+		velocity = puppet_velocity
 	#Normalize player movement input to make sure speed is constant
 	velocity = velocity.normalized() * speed
 	move_and_slide(velocity)
@@ -36,10 +35,10 @@ func get_input():
 	if is_network_master():
 		self.look_at(get_global_mouse_position())
 		
-		rset("slave_rotation", rotation)
+		rset("puppet_rotation", rotation)
 	else:
-		self.rotation = slave_rotation
-		slave_pos = position # To avoid jitter
+		self.rotation = puppet_rotation
+		puppet_pos = position # To avoid jitter
 
 func set_player_name(new_name):
 	get_node("CanvasLayer/Label").set_text(new_name)
