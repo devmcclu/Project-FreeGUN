@@ -8,4 +8,4 @@ signal health_changed
 
 #Base player variables and stats
 export (int) var speed = 200
-var velocity = Vector2()
+var velocity : Vector2 = Vector2()

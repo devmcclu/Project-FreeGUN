@@ -2,17 +2,17 @@ extends Character
 
 class_name Player
 
-func _ready():
+func _ready() -> void:
 	make_gui()
 
-func make_gui():
+func make_gui() -> void:
 	$"Camera2D".make_current()
 	$"CanvasLayer/GUI".visible = true
 
-func _process(delta):
+func _process(delta : float) -> void:
 	pass
 
-func get_input():
+func get_input() -> void:
 	#Create controlable Vector2 for player movement input
 	velocity = Vector2()
 	#Change movement Vector2 variables on player input
@@ -30,5 +30,5 @@ func get_input():
 	#Player looks at mouse
 	self.look_at(get_global_mouse_position())
 
-func _physics_process(delta):
+func _physics_process(delta : float) -> void:
 	get_input()
