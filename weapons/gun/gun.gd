@@ -5,21 +5,25 @@ const Bullet = preload("res://weapons/bullet/bullet.tscn")
 signal gun_changed
 signal ammo_changed
 
-var current_gun : int = 0
-var bullet_speed : int = 500
-var damage :int = 34
+var current_gun: int = 0
+var bullet_speed: int = 500
+var damage: int = 34
+
 
 func _ready() -> void:
 	make_gui()
 	pass
 
-func _process(delta : float) -> void:
+
+func _process(delta: float) -> void:
 	check_shoot()
 	change_gun()
+
 
 func make_gui() -> void:
 	emit_signal("gun_changed")
 	emit_signal("ammo_changed")
+
 
 func _shoot() -> void:
 	if $"Inventory".gun_ammo[current_gun] > 0:
@@ -39,6 +43,7 @@ func _shoot() -> void:
 			emit_signal("ammo_changed")
 			print("one less")
 		print(new_bullet.parent)
+
 
 func change_gun() -> void:
 	#Switch player weapon when switch weapon key is pressed
@@ -67,11 +72,13 @@ func change_gun() -> void:
 			emit_signal("gun_changed")
 			emit_signal("ammo_changed")
 
+
 func check_shoot() -> void:
 	if Input.is_action_just_pressed("fire_gun"):
 		self._shoot()
 
-func _on_Area2D_area_entered(area : Area2D) -> void:
+
+func _on_Area2D_area_entered(area: Area2D) -> void:
 	self.current_gun = area.gun_number
 	self.bullet_speed = area.bullet_speed
 	self.damage = area.damage

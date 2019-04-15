@@ -1,13 +1,14 @@
 extends Player
 
-puppet var puppet_pos : Vector2 = Vector2()
-puppet var puppet_velocity : Vector2 = Vector2()
-puppet var puppet_rotation = 0
+puppet var puppet_pos: Vector2 = Vector2()
+puppet var puppet_velocity: Vector2 = Vector2()
+puppet var puppet_rotation: = 0
 
 func make_gui() -> void:
 	if is_network_master():
 		$"Camera2D".make_current()
 		$"CanvasLayer/GUI".visible = true
+
 
 func get_input() -> void:
 	#Create controlable Vector2 for player movement input
@@ -39,6 +40,7 @@ func get_input() -> void:
 	else:
 		self.rotation = puppet_rotation
 		puppet_pos = position # To avoid jitter
+
 
 func set_player_name(new_name) -> void:
 	get_node("CanvasLayer/Label").set_text(new_name)

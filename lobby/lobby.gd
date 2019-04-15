@@ -14,6 +14,7 @@ func _ready() -> void:
 	gamestate.connect("game_ended", self, "_on_game_ended")
 	gamestate.connect("game_error", self, "_on_game_error")
 
+
 func _on_host_pressed() -> void:
 	#Don't host if no name is entered
 	if get_node("Connect/Name").text == "":
@@ -48,14 +49,17 @@ func _on_join_pressed() -> void:
 	gamestate.join_game(ip, player_name)
 	# refresh_lobby() gets called by the player_list_changed signal
 
+
 func _on_connection_success() -> void:
 	get_node("Connect").hide()
 	get_node("Players").show()
+
 
 func _on_connection_failed() -> void:
 	get_node("Connect/Host").disabled=false
 	get_node("Connect/Join").disabled=false
 	get_node("Connect/ErrorLabel").set_text("Connection failed.")
+
 
 func _on_game_ended() -> void:
 	show()
@@ -64,9 +68,11 @@ func _on_game_ended() -> void:
 	get_node("Connect/Host").disabled=false
 	get_node("Connect/Join").disabled
 
-func _on_game_error(errtxt : String) -> void:
+
+func _on_game_error(errtxt: String) -> void:
 	get_node("Error").dialog_text = errtxt
 	get_node("Error").popup_centered_minsize()
+
 
 func refresh_lobby() -> void:
 	var players = gamestate.get_player_list()
@@ -77,6 +83,7 @@ func refresh_lobby() -> void:
 		get_node("Players/List").add_item(p)
 
 	get_node("Players/Start").disabled=not get_tree().is_network_server()
+
 
 func _on_start_pressed() -> void:
 	gamestate.begin_game()

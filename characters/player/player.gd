@@ -5,12 +5,15 @@ class_name Player
 func _ready() -> void:
 	make_gui()
 
+
 func make_gui() -> void:
 	$"Camera2D".make_current()
 	$"CanvasLayer/GUI".visible = true
 
-func _process(delta : float) -> void:
+
+func _process(delta: float) -> void:
 	pass
+
 
 func get_input() -> void:
 	#Create controlable Vector2 for player movement input
@@ -30,5 +33,6 @@ func get_input() -> void:
 	#Player looks at mouse
 	self.look_at(get_global_mouse_position())
 
-func _physics_process(delta : float) -> void:
+
+func _physics_process(delta: float) -> void:
 	get_input()
