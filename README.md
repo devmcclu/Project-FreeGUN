@@ -1,6 +1,8 @@
 # Project FreeGUN
 Project FreeGUN is a FOSS 2D shooter made in the Godot Engine. Everything in the game is free and open source; the code, art assests, etc. The goal of the project is to be a framework to be built upon for other games. The game is built around mouse and keyboard controls, and should work on Windows, Linux, and macOS.
 
+This is the legacy Godot 3 branch. It is missing features, and will not be updated for the forseable future
+
 ## Dependencies
 
 - Godot 3.0.6 (earlier minor releases might work)
