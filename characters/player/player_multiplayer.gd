@@ -1,16 +1,16 @@
-extends "res://characters/player/player.gd"
+extends Player
 
-slave var slave_pos = Vector2()
-slave var slave_velocity = Vector2()
-slave var slave_rotation = 0
-slave var slave_health = 100
+puppet var puppet_pos: Vector2 = Vector2()
+puppet var puppet_velocity: Vector2 = Vector2()
+puppet var puppet_rotation: float = 0
 
-func make_gui():
+func make_gui() -> void:
 	if is_network_master():
 		$"Camera2D".make_current()
 		$"CanvasLayer/GUI".visible = true
 
-func get_input():
+
+func get_input() -> void:
 	#Create controlable Vector2 for player movement input
 	velocity = Vector2()
 	if is_network_master():
@@ -24,11 +24,11 @@ func get_input():
 		if Input.is_action_pressed('player_move_up'):
 			velocity.y -= 1
 		
-		rset("slave_velocity", velocity)
-		rset("slave_pos", position)
+		rset("puppet_velocity", velocity)
+		rset("puppet_pos", position)
 	else:
-		position = slave_pos
-		velocity = slave_velocity
+		position = puppet_pos
+		velocity = puppet_velocity
 	#Normalize player movement input to make sure speed is constant
 	velocity = velocity.normalized() * speed
 	move_and_slide(velocity)
@@ -36,10 +36,11 @@ func get_input():
 	if is_network_master():
 		self.look_at(get_global_mouse_position())
 		
-		rset("slave_rotation", rotation)
+		rset("puppet_rotation", rotation)
 	else:
-		self.rotation = slave_rotation
-		slave_pos = position # To avoid jitter
+		self.rotation = puppet_rotation
+		puppet_pos = position # To avoid jitter
 
-func set_player_name(new_name):
+
+func set_player_name(new_name) -> void:
 	get_node("CanvasLayer/Label").set_text(new_name)

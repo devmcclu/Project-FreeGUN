@@ -3,7 +3,7 @@ Project FreeGUN is a FOSS 2D shooter made in the Godot Engine. Everything in the
 
 ## Dependencies
 
-- Godot 3.0.6 (earlier minor releases might work)
+- Godot 3.1 (will not work with 3.0.6 or earlier!)
 
 ## Setup for game development
 - Navigate to the desired install location

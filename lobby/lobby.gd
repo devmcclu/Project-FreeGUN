@@ -4,7 +4,7 @@ extends Control
 # var a = 2
 # var b = "textvar"
 
-func _ready():
+func _ready() -> void:
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	#Connect gamestate signals to lobby functions
@@ -14,7 +14,8 @@ func _ready():
 	gamestate.connect("game_ended", self, "_on_game_ended")
 	gamestate.connect("game_error", self, "_on_game_error")
 
-func _on_host_pressed():
+
+func _on_host_pressed() -> void:
 	#Don't host if no name is entered
 	if get_node("Connect/Name").text == "":
 		get_node("Connect/ErrorLabel").text="Invalid name!"
@@ -29,7 +30,7 @@ func _on_host_pressed():
 	refresh_lobby()
 
 
-func _on_join_pressed():
+func _on_join_pressed() -> void:
 	#Don't join if no name is entered
 	if get_node("Connect/Name").text == "":
 		get_node("Connect/ErrorLabel").text="Invalid name!"
@@ -48,27 +49,32 @@ func _on_join_pressed():
 	gamestate.join_game(ip, player_name)
 	# refresh_lobby() gets called by the player_list_changed signal
 
-func _on_connection_success():
+
+func _on_connection_success() -> void:
 	get_node("Connect").hide()
 	get_node("Players").show()
 
-func _on_connection_failed():
+
+func _on_connection_failed() -> void:
 	get_node("Connect/Host").disabled=false
 	get_node("Connect/Join").disabled=false
 	get_node("Connect/ErrorLabel").set_text("Connection failed.")
 
-func _on_game_ended():
+
+func _on_game_ended() -> void:
 	show()
 	get_node("Connect").show()
 	get_node("Players").hide()
 	get_node("Connect/Host").disabled=false
 	get_node("Connect/Join").disabled
 
-func _on_game_error(errtxt):
+
+func _on_game_error(errtxt: String) -> void:
 	get_node("Error").dialog_text = errtxt
 	get_node("Error").popup_centered_minsize()
 
-func refresh_lobby():
+
+func refresh_lobby() -> void:
 	var players = gamestate.get_player_list()
 	players.sort()
 	get_node("Players/List").clear()
@@ -78,5 +84,6 @@ func refresh_lobby():
 
 	get_node("Players/Start").disabled=not get_tree().is_network_server()
 
-func _on_start_pressed():
+
+func _on_start_pressed() -> void:
 	gamestate.begin_game()
