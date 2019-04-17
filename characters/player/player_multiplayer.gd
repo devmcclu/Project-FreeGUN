@@ -2,7 +2,7 @@ extends Player
 
 puppet var puppet_pos: Vector2 = Vector2()
 puppet var puppet_velocity: Vector2 = Vector2()
-puppet var puppet_rotation: = 0
+puppet var puppet_rotation: float = 0
 
 func make_gui() -> void:
 	if is_network_master():
