@@ -1,17 +1,18 @@
 extends Node
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
 var add_score: bool = true
 
+var player_scores: Dictionary = {}
+
 func _ready() -> void:
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	pass
+	# Add initial player scores
+	for p_id in gamestate.players.keys():
+		self.player_scores[p_id] = 0
 
 #func _process(delta) -> void:
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
 #	pass
+
+remote func update_score() -> void:
+	pass
