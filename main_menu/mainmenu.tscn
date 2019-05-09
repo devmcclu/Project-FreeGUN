@@ -38,6 +38,5 @@ margin_top = 8.5
 margin_right = 41.5
 margin_bottom = 28.5
 text = "Multiplayer"
-
 [connection signal="pressed" from="Panel/Singleplayer" to="." method="_on_Singleplayer_pressed"]
 [connection signal="pressed" from="Panel/Multiplayer" to="." method="_on_Multiplayer_pressed"]
