@@ -19,6 +19,8 @@ func _ready() -> void:
 
 sync func update_score(player_id: int) -> void:
 	assert(player_id in player_scores)
+	player_scores[player_id].score += 1
+	print(player_scores.values())
 	
 func add_player(id, new_player_name):
 	player_scores[id] = { name = new_player_name, score = 0 }
