@@ -15,7 +15,7 @@ func _on_bullet_body_entered(body: PhysicsBody2D) -> void:
 			if self.parent != body:
 #				body.health -= parent.gun_stats[2]
 #				body.health_check()
-				body.get_node("Health").health_check(parent.get_node("Gun").damage)
+				body.get_node("Health").health_check(parent.get_node("Gun").damage, parent.get_tree().get_network_unique_id())
 				print(body.get_node("Health").health)
 				self.queue_free()
 		#Wall collision layer
