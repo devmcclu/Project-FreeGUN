@@ -25,7 +25,7 @@ func _on_host_pressed() -> void:
 	get_node("Players").show()
 	get_node("Connect/ErrorLabel").text=""
 
-	var player_name = get_node("Connect/Name").text
+	var player_name: String = get_node("Connect/Name").text
 	gamestate.host_game(player_name)
 	refresh_lobby()
 
@@ -36,7 +36,7 @@ func _on_join_pressed() -> void:
 		get_node("Connect/ErrorLabel").text="Invalid name!"
 		return
 
-	var ip = get_node("Connect/IP").text
+	var ip: String = get_node("Connect/IP").text
 	if not ip.is_valid_ip_address():
 		get_node("Connect/ErrorLabel").text="Invalid IPv4 address!"
 		return
@@ -75,7 +75,7 @@ func _on_game_error(errtxt: String) -> void:
 
 
 func refresh_lobby() -> void:
-	var players = gamestate.get_player_list()
+	var players: Array = gamestate.get_player_list()
 	players.sort()
 	get_node("Players/List").clear()
 	get_node("Players/List").add_item(gamestate.get_player_name() + " (You)")
