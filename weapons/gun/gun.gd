@@ -36,6 +36,21 @@ func _shoot() -> void:
 		new_bullet.rotation = get_parent().rotation
 		#Velocity of the bullet is set to the speed of the weapon's bullets
 		new_bullet.linear_velocity = Vector2(cos(get_parent().rotation)*bullet_speed, sin(get_parent().rotation)*bullet_speed)
+		#Play the sound for the current gun being used
+		var gun_sound: String
+		match current_gun:
+			#Pistol
+			0:
+				gun_sound = "res://weapons/gun/pistol/pistol_shot_" + str(randi() % 3 + 1) + ".wav"
+			#RPG
+			1:
+				gun_sound = "res://weapons/gun/rpg/rpg_shot_" + str(randi() % 3 + 1) + ".wav"
+			#SMG
+			2:
+				gun_sound = "res://weapons/gun/smg/smg_shot_" + str(randi() % 5 + 1) + ".wav"
+				
+		$"GunSoundPlayer".stream = load(gun_sound)
+		$"GunSoundPlayer".play(0)
 		#Check to see if player still has ammo for all guns besides starting weapon
 		if current_gun > 0:
 			$"Inventory".gun_ammo[current_gun] -= 1
