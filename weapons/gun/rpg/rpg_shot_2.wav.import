@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/rpg_shot_2.wav-0b7f31cf390cde4bb9547f47f13415b2.sample"
+
+[deps]
+
+source_file="res://weapons/gun/rpg/rpg_shot_2.wav"
+dest_files=[ "res://.import/rpg_shot_2.wav-0b7f31cf390cde4bb9547f47f13415b2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
