@@ -1,26 +1,22 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://weapons/gun/gun.gd" type="Script" id=1]
 [ext_resource path="res://weapons/gun/gun.png" type="Texture" id=2]
 [ext_resource path="res://weapons/gun/inventory.gd" type="Script" id=3]
+[ext_resource path="res://weapons/gun/pistol/pistol_shot_1.wav" type="AudioStream" id=4]
 
 [node name="Gun" type="Node2D"]
-
 script = ExtResource( 1 )
 
-[node name="GunSprite" type="Sprite" parent="." index="0"]
-
+[node name="GunSprite" type="Sprite" parent="."]
 rotation = 1.5708
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="BulletSpawn" type="Position2D" parent="." index="1"]
-
+[node name="BulletSpawn" type="Position2D" parent="."]
 position = Vector2( 16, 0 )
-_sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Inventory" type="Node" parent="." index="2"]
-
+[node name="Inventory" type="Node" parent="."]
 script = ExtResource( 3 )
 
-
+[node name="GunSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
