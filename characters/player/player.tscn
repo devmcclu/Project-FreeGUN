@@ -53,7 +53,6 @@ script = ExtResource( 5 )
 [node name="Camera2D" type="Camera2D" parent="."]
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
-
 [connection signal="ammo_changed" from="Gun" to="CanvasLayer/GUI/VBoxContainer/HBoxContainer/AmmoCounter" method="_on_Gun_ammo_changed"]
 [connection signal="gun_changed" from="Gun" to="CanvasLayer/GUI/VBoxContainer/HBoxContainer/GunName" method="_on_Gun_gun_changed"]
 [connection signal="area_entered" from="Area2D" to="Gun" method="_on_Area2D_area_entered"]

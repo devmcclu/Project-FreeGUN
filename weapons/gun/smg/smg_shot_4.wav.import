@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/smg_shot_4.wav-2dc0a4cdc85a850485acd093ce40683a.sample"
+
+[deps]
+
+source_file="res://weapons/gun/smg/smg_shot_4.wav"
+dest_files=[ "res://.import/smg_shot_4.wav-2dc0a4cdc85a850485acd093ce40683a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
